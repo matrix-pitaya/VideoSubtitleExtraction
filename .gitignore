@@ -9,3 +9,5 @@ cookies*.txt
 .env.*
 !.env.example
 *.log
+dist/
+release-output/
