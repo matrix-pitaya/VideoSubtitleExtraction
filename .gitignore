@@ -14,3 +14,5 @@ build-cache/
 release-output/
 versions/Windows/*.zip
 versions/Windows/SHA256.txt
+
+versions/Windows/builds/
