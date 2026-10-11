@@ -16,7 +16,7 @@ class ScreenTextTests(unittest.TestCase):
         self.assertEqual(len(segments), 2)
         self.assertEqual(segments[0]['end'], 2)
 
-    def test_auto_ocr_fallback_preserves_original(self):
+    def test_default_silence_stays_empty_without_ocr(self):
         class SilentModel:
             def transcribe(self, path, **kwargs):
                 return iter([]), SimpleNamespace(language='zh')
@@ -28,8 +28,19 @@ class ScreenTextTests(unittest.TestCase):
             segments = [{'start': 0, 'end': 2, 'text': '画面文案'}]
             with patch('screen_text.extract_screen_text', return_value=segments) as ocr:
                 core.process_item(order, item, SilentModel(), 'zh')
-            self.assertEqual(item['status'], '完成')
-            self.assertEqual(item['text'], '画面文案')
-            self.assertIn('OCR', item['text_origin'])
+            self.assertEqual(item['status'], '无口播')
+            self.assertEqual(item['text'], '')
+            self.assertEqual(item['segments'], [])
             self.assertTrue(media.exists())
-            ocr.assert_called_once()
+            ocr.assert_not_called()
+
+    def test_ocr_requires_explicit_mode(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(core, 'ROOT', Path(tmp)):
+            media = Path(tmp) / 'original.mp4'
+            media.touch()
+            order = core.create_order('画面文字')
+            item = core.add_item(order, str(media), '测试', str(media))
+            with patch('screen_text.extract_screen_text', return_value=[{'start': 0, 'end': 1, 'text': '画面文字'}]):
+                core.process_item(order, item, None, 'zh', mode='ocr')
+            self.assertEqual(item['text'], '画面文字')
+            self.assertEqual(item['status'], '完成')

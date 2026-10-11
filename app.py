@@ -1,6 +1,6 @@
 from pathlib import Path
 import streamlit as st
-from core import ROOT, MEDIA_EXTENSIONS, add_item, create_order, extract_links, load_orders, process_item, save_order, export_order
+from core import ROOT, MEDIA_EXTENSIONS, FINISHED_STATUSES, transcript_paragraphs, add_item, create_order, extract_links, load_orders, process_item, save_order, export_order
 
 st.set_page_config(page_title="视频文案工作台", page_icon="🎬", layout="wide")
 st.title("🎬 视频文案工作台")
@@ -32,7 +32,7 @@ with st.sidebar:
     model_name = st.selectbox("识别模型", ["small", "medium", "large-v3", "tiny"], help="small 适合 CPU 起步；更大的模型占用更多内存，首次使用需下载。")
     device = st.selectbox("计算设备", ["cpu", "cuda"], help="CUDA 需要兼容的 NVIDIA 显卡和运行库。")
     language = st.selectbox("音频语言", ["中文", "自动检测", "英语"])
-    extraction_mode = st.selectbox("提取方式", ["自动：口播优先，无口播识别画面文字", "仅口播", "仅画面文字"])
+    extraction_mode = st.selectbox("提取方式", ["口播文案（默认，无口播留空）", "画面文字 OCR（手动选择）"])
     cookie_path = st.text_input("Cookies 文件路径（可选）", type="password", help="本机 Netscape 格式文件路径，用于你有权访问的登录内容。不会加入交付包。")
 
 order = next(o for o in orders if o["id"] == selected)
@@ -71,12 +71,14 @@ with st.expander("导入视频或链接", expanded=not order["items"]):
         save_order(order)
         st.rerun()
 
-st.info("抖音分享链接自动下载，与本地视频使用相同提取流程。默认口播优先，无口播时识别画面文字；OCR 时间轴按 1 秒采样估算，可能包含水印或商品文字，请校对。")
+st.info("默认只提取口播文案。仅 BGM / 无口播的视频会留空，不自动把画面或商品包装上的文字当作文案。客户 Excel 仅含编号、标题、文案；Word 按标题和正文分段。")
+if extraction_mode.startswith("画面"):
+    st.warning("画面文字 OCR 可能包含包装、水印或重复文字，需要人工校对；时间轴按 1 秒采样估算。")
 st.caption("链接下载的临时视频 / 音频在处理结束后自动删除（失败也清理）；保留文案和字幕。重试时重新下载。上传文件和本地原文件不受影响。")
 items = order["items"]
 cols = st.columns(3)
 cols[0].metric("视频总数", len(items))
-cols[1].metric("已完成", sum(i["status"] == "完成" for i in items))
+cols[1].metric("已处理", sum(i["status"] in FINISHED_STATUSES for i in items))
 cols[2].metric("失败", sum(i["status"] == "失败" for i in items))
 if items:
     for item in items:
@@ -84,45 +86,57 @@ if items:
             st.warning(item["title"] + "：" + item["cleanup_error"])
     st.dataframe([{k: i[k] for k in ["title", "status", "error"]} for i in items], width="stretch")
     if st.button("开始 / 重试未完成视频", type="primary"):
-        pending = [i for i in items if i["status"] != "完成"]
+        pending = [i for i in items if i["status"] not in FINISHED_STATUSES]
         if pending:
             try:
                 with st.spinner("加载模型；首次运行需联网下载，请耐心等待…"):
-                    model = None if extraction_mode == "仅画面文字" else get_model(model_name, device)
+                    model = None if extraction_mode.startswith("画面") else get_model(model_name, device)
                 progress = st.progress(0)
                 status = st.empty()
                 for index, item in enumerate(pending):
                     status.write(f"正在处理 {index + 1}/{len(pending)}：{item['title']}")
                     process_item(order, item, model, {"中文": "zh", "英语": "en", "自动检测": None}[language], cookie_path,
                                  on_progress=lambda stage: status.write(f"{index + 1}/{len(pending)} · {stage}：{item['title']}"),
-                                 mode={"自动：口播优先，无口播识别画面文字": "auto", "仅口播": "audio", "仅画面文字": "ocr"}[extraction_mode])
+                                 mode="ocr" if extraction_mode.startswith("画面") else "audio")
                     progress.progress((index + 1) / len(pending))
                 st.rerun()
             except Exception as exc:
                 st.error(f"模型加载失败：{exc}")
                 st.info("若包含 ConnectError / WinError 10013，表示模型下载连接被阻止，切换 CPU 无法解决。可在项目目录运行 .\\.venv\\Scripts\\python.exe download_models.py --model " + model_name + "，下载完成后重试。CUDA 运行库错误才需切换 CPU。")
-    completed = [i for i in items if i["status"] == "完成"]
+    completed = [i for i in items if i["status"] in FINISHED_STATUSES]
     if completed:
         with st.expander("校对字幕和文案", expanded=True):
             edit_id = st.selectbox("选择视频", [i["id"] for i in completed], format_func=lambda v: next(i["title"] for i in completed if i["id"] == v))
             item = next(i for i in completed if i["id"] == edit_id)
+            edited_title = st.text_input("交付标题", value=item["title"], key="title_" + edit_id)
+            if item["status"] == "无口播":
+                st.info("此视频未检测到口播，交付文案为空。")
             st.caption("提取方式：" + item.get("text_origin", "口播转写"))
             st.caption("逐句编辑会同时更新 Word、Excel、TXT 和 SRT。时间单位为秒。")
-            edited = st.data_editor(item["segments"], key="segments_" + edit_id, num_rows="dynamic", width="stretch")
+            import pandas as pd
+            edited = st.data_editor(pd.DataFrame(item["segments"], columns=["start", "end", "text"]), key="segments_" + edit_id, num_rows="dynamic", width="stretch")
             if st.button("保存校对"):
                 try:
-                    clean = [{"start": float(s["start"]), "end": float(s["end"]), "text": str(s["text"] or "").strip()} for s in edited]
+                    clean = [{"start": float(s["start"]), "end": float(s["end"]), "text": str(s["text"] or "").strip()} for s in edited.to_dict("records")]
                     import math
                     if any(not math.isfinite(s["start"]) or not math.isfinite(s["end"]) or s["start"] < 0 or s["end"] <= s["start"] or not s["text"] for s in clean):
                         raise ValueError("每句需有文字，时间需满足 0 ≤ 开始 < 结束。")
-                    if not clean or any(clean[n]["start"] < clean[n - 1]["end"] for n in range(1, len(clean))):
-                        raise ValueError("字幕不能为空，时间须按顺序且不重叠。")
+                    if any(clean[n]["start"] < clean[n - 1]["end"] for n in range(1, len(clean))):
+                        raise ValueError("字幕时间须按顺序且不重叠。")
+                    item["title"] = edited_title.strip() or item["title"]
                     item["segments"] = clean
-                    item["text"] = "\n".join(s["text"] for s in clean)
+                    item["text"] = transcript_paragraphs(clean)
+                    item["status"] = "完成" if clean else "无口播"
                     save_order(order)
+                    st.session_state.pop("export_" + selected, None)
                     st.success("校对已保存。")
                 except (TypeError, ValueError, KeyError) as exc:
                     st.error(str(exc))
+            if item["segments"] and st.button("确认无口播，清空此视频文案"):
+                item.update(status="无口播", text="", segments=[], note="人工确认无口播", text_origin="口播转写")
+                save_order(order)
+                st.session_state.pop("export_" + selected, None)
+                st.rerun()
         if st.button("生成交付包"):
             try:
                 archive = export_order(order)
@@ -130,6 +144,6 @@ if items:
             except Exception as exc:
                 st.error(f"导出失败：{exc}")
         archive_path = st.session_state.get("export_" + selected)
-        if archive_path and Path(archive_path).is_file():
+        if archive_path and Path(archive_path).is_file() and Path(archive_path).parent.name == "delivery":
             st.download_button("下载交付 ZIP（含 Excel / Word / SRT / TXT）", Path(archive_path).read_bytes(), file_name=Path(archive_path).name, mime="application/zip")
             st.caption("修改字幕或新增视频后，请重新生成交付包。")
