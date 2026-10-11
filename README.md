@@ -1,6 +1,6 @@
 # 视频文案工作台
 
-平台版本和交付入口统一整理在 [versions](versions/README.md)：当前网页版、Windows、macOS、Android、iOS。当前网页版与 Windows 便携包已可用，其他平台为预留目录，尚未开发。
+平台版本和交付入口统一整理在 [versions](versions/README.md)：Web、Windows、macOS、Android、iOS。Web 与 Windows 便携包已可用，其他平台为预留目录，尚未开发。Web 启动入口为 `versions/Web/打开Web.cmd`。
 
 本地部署的接单工具，使用 Streamlit + faster-whisper + yt-dlp。批量音视频口播转写，逐句校对，输出 Excel、Word、SRT、TXT 和 ZIP。订单状态保存在 `data/`，重启后可继续未完成任务；失败项目单独重试，成功项目跳过。
 
@@ -15,7 +15,7 @@
 在已安装本项目依赖的 Python 3.12 环境中，准备 Python 官方 `python-3.12.10-embed-amd64.zip`，确保 `models/small` 已下载，然后运行：
 
 ```powershell
-.\.venv\Scripts\python.exe build_delivery.py --runtime-zip data/python-3.12.10-embed-amd64.zip --output dist/新版本目录
+.\.venv\Scripts\python.exe build_delivery.py --runtime-zip build-cache/python-3.12.10-embed-amd64.zip --output dist/新版本目录
 ```
 
 构建器只复制明确允许的应用源文件、已安装依赖的必要文件和四个模型文件，不复制 `.venv` 整体、订单数据、登录凭证或 Git 历史。第三方许可证保留在依赖目录，Whisper 模型许可证单独附带。输出包含 ZIP、文件校验清单和 SHA256。交付文件保存在本地 `dist/`，不会自动推送大文件到 GitHub。当前属于可独立运行的源码便携包，没有授权码、代码加密或付费激活功能。
