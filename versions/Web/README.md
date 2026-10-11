@@ -8,7 +8,7 @@
 
 ## Windows 启动
 
-客户便携包使用独立的 Python 3.12 Windows x64 嵌入式运行环境、自带依赖和 small 模型。解压后双击「打开视频文案工具.cmd」即可，无需安装 Python 或下载默认模型；「停止视频文案工具.cmd」关闭这个文件夹启动的服务。详细限制见 `CUSTOMER_GUIDE.txt`。便携包自动选择空闲端口，支持中文和空格目录，与开发环境的 8501 服务可以同时运行。
+客户便携包使用独立的 Python 3.12 Windows x64 嵌入式运行环境、自带依赖和 small 模型。解压后双击「VideoSubtitleExtraction.cmd」即可，无需安装 Python 或下载默认模型；「VideoSubtitleExtraction.Stop.cmd」关闭这个文件夹启动的服务。详细限制见 `CUSTOMER_GUIDE.txt`。便携包自动选择空闲端口，支持中文和空格目录，与开发环境的 8501 服务可以同时运行。
 
 ### 构建便携交付包
 
@@ -20,14 +20,14 @@
 
 构建器只复制明确允许的应用源文件、已安装依赖的必要文件和四个模型文件，不复制 `.venv` 整体、订单数据、登录凭证或 Git 历史。第三方许可证保留在依赖目录，Whisper 模型许可证单独附带。输出包含 ZIP、文件校验清单和 SHA256。新构建交付文件保存在相邻的 `../Windows/builds/`，不会自动推送大文件到 GitHub。当前属于可独立运行的源码便携包，没有授权码、代码加密或付费激活功能。
 
-Web 开发环境双击 **打开Web.cmd**：服务未启动时会在后台启动，随后用默认浏览器打开页面；已启动时直接打开，不重复启动。新电脑首次使用请先按下方步骤运行 `start.ps1` 安装环境。
+Web 开发环境双击 **VideoSubtitleExtraction.cmd**：服务未启动时会在后台启动，随后用默认浏览器打开页面；已启动时直接打开，不重复启动。新电脑首次使用请先按下方步骤运行 `VideoSubtitleExtraction.Setup.ps1` 安装环境。
 
-**视频文案工具网址.url** 仅打开网址，适合本地服务已运行的情况。
+**VideoSubtitleExtraction.url** 仅打开网址，适合本地服务已运行的情况。
 
 安装 Python 3.11 或 3.12（含 Python Launcher），在本目录 PowerShell 执行：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\start.ps1
+powershell -ExecutionPolicy Bypass -File .\VideoSubtitleExtraction.Setup.ps1
 ```
 
 浏览器访问 http://127.0.0.1:8501 。首次安装依赖和首次加载模型需要网络。默认 small + CPU，无独立显卡也可运行。中文质量要求高时选 medium / large-v3，速度和内存需求更高。CUDA 模式需自行安装与 CTranslate2 兼容的 NVIDIA 运行库，失败时使用 CPU。

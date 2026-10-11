@@ -16,3 +16,4 @@ versions/Windows/*.zip
 versions/Windows/SHA256.txt
 
 versions/Windows/builds/
+versions/Windows/VideoSubtitleExtraction*.zip

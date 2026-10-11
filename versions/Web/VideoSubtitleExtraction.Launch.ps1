@@ -12,7 +12,7 @@ try {
     if (-not (Test-Workbench)) {
         $pythonPath = Join-Path $PSScriptRoot '.venv\Scripts\python.exe'
         if (-not (Test-Path -LiteralPath $pythonPath)) {
-            throw 'Run start.ps1 once to install the Python environment first.'
+            throw 'Run VideoSubtitleExtraction.Setup.ps1 once to install the Python environment first.'
         }
         $dataPath = Join-Path $PSScriptRoot 'data'
         New-Item -ItemType Directory -Force -Path $dataPath | Out-Null

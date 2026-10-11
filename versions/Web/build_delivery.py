@@ -40,7 +40,11 @@ def dependency_closure():
 def build(runtime_zip: Path, output: Path):
     if sys.version_info[:2] != (3, 12):
         raise ValueError('Build with Python 3.12 for the supplied runtime')
-    folder = output / '视频文案工作台-Windows-x64'
+    # Nested platform directories can exceed Windows' legacy 260-character limit.
+    output = output.resolve()
+    if sys.platform == 'win32' and not str(output).startswith('\\\\?\\'):
+        output = Path('\\\\?\\' + str(output))
+    folder = output / 'VideoSubtitleExtraction-Windows-x64'
     if folder.exists():
         raise FileExistsError('Output folder already exists; choose a new output directory')
     folder.mkdir(parents=True)
@@ -75,7 +79,7 @@ def build(runtime_zip: Path, output: Path):
     for name in ['config.json', 'model.bin', 'tokenizer.json', 'vocabulary.txt']:
         shutil.copy2(ROOT / 'models' / 'small' / name, model / name)
     shutil.copy2(ROOT / 'MODEL_LICENSE.txt', model / 'LICENSE.txt')
-    for name, flag in [('打开视频文案工具.cmd', ''), ('停止视频文案工具.cmd', '--stop')]:
+    for name, flag in [('VideoSubtitleExtraction.cmd', ''), ('VideoSubtitleExtraction.Stop.cmd', '--stop')]:
         (folder / name).write_bytes(('@echo off\r\ncd /d "%~dp0"\r\n"%~dp0runtime\\python.exe" "%~dp0portable_launcher.py" ' + flag + '\r\nif errorlevel 1 pause\r\n').encode('ascii'))
     shutil.copy2(ROOT / 'CUSTOMER_GUIDE.txt', folder / '使用说明.txt')
     manifest = []

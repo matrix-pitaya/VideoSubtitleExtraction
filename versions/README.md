@@ -4,7 +4,7 @@
 
 | 目录 | 当前状态 | 用途 |
 | --- | --- | --- |
-| Web | 可用 | 双击 `Web/打开Web.cmd` 启动本目录的完整 Web 工程，使用浏览器操作 |
+| Web | 可用 | 双击 `Web/VideoSubtitleExtraction.cmd` 启动本目录的完整 Web 工程，使用浏览器操作 |
 | Windows | 可用便携包 | 客户解压后双击启动；尚未开发独立窗口版 |
 | macOS | 未开发 | 预留 Mac 软件工程和交付文件位置 |
 | Android | 未开发 | 预留本地识别 Android 软件工程和 APK 位置 |
