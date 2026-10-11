@@ -45,7 +45,7 @@ def wechat_detail(session, url: str) -> dict:
     response = session.post("https://channels.weixin.qq.com/finder-preview/api/feed/get_feed_info",
         params={"_rid": f"{int(time.time()):x}-{secrets.token_hex(4)}", "_pageUrl": page},
         json={"baseReq": {"generalToken": token}, **({"shortUri": short_id} if short_id else {"exportId": export_id})},
-        headers={"Referer": page, "Origin": "https://channels.weixin.qq.com"}, timeout=(10, 30))
+        headers={"Referer": url if export_id else page, "Origin": "https://channels.weixin.qq.com"}, timeout=(10, 30))
     response.raise_for_status()
     data = response.json()
     if data.get("errCode") not in (None, 0):
@@ -57,8 +57,8 @@ def wechat_detail(session, url: str) -> dict:
 
 
 def wechat_media_urls(feed: dict) -> list[str]:
-    return [url for url in [feed.get("h264VideoInfo", {}).get("videoUrl"),
-                           feed.get("h265VideoInfo", {}).get("videoUrl"), feed.get("videoUrl")] if url]
+    return [url for url in [(feed.get("h264VideoInfo") or {}).get("videoUrl"),
+                           (feed.get("h265VideoInfo") or {}).get("videoUrl"), feed.get("videoUrl")] if url]
 
 
 def download_wechat_channels(item: dict, folder: Path, cookie_path: str = "",
@@ -72,6 +72,18 @@ def download_wechat_channels(item: dict, folder: Path, cookie_path: str = "",
         except Exception:
             official_error = "官方分享接口访问失败"
         urls = wechat_media_urls(feed)
+        login_error = ""
+        if not urls:
+            from channels_auth import SESSION_FILE, resolve_with_saved_session
+            if SESSION_FILE.is_file():
+                try:
+                    playable = resolve_with_saved_session(item["source"])
+                    feed = wechat_detail(session, playable)
+                    urls = wechat_media_urls(feed)
+                except ValueError as exc:
+                    login_error = str(exc)
+                except Exception:
+                    login_error = "腾讯元宝解析连接失败，请检查网络后重试"
         if not urls and parser_url:
             if urlparse(parser_url).scheme not in ("http", "https"):
                 raise ValueError("解析接口地址必须以 https:// 或 http:// 开头")
@@ -88,8 +100,7 @@ def download_wechat_channels(item: dict, folder: Path, cookie_path: str = "",
             except requests.RequestException as exc:
                 raise ValueError("视频号解析接口连接失败或授权无效，请检查接口地址与密钥") from exc
         if not urls:
-            raise ValueError((official_error + "；" if official_error else "官方分享页只返回标题/封面，没有视频地址；") +
-                "需要可用的登录 Cookies 或配置视频号解析接口，也可保存视频后导入。封面不能用于口播转写。")
+            raise ValueError(login_error or "此分享页没有视频地址，请在侧栏点击“扫码登录视频号下载”，完成登录后重试。")
         item["title"] = (feed.get("description") or "视频号视频")[:200]
         path = download_media(session, urls, folder / (item["id"] + ".mp4"))
         item["download_engine"] = "wechat-channels-share"

@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 import streamlit as st
 from core import ROOT, MEDIA_EXTENSIONS, FINISHED_STATUSES, transcript_paragraphs, add_item, create_order, extract_links, load_orders, process_item, save_order, export_order
 
@@ -34,10 +35,35 @@ with st.sidebar:
     language = st.selectbox("音频语言", ["中文", "自动检测", "英语"])
     extraction_mode = st.selectbox("提取方式", ["口播文案（默认，无口播留空）", "画面文字 OCR（手动选择）"])
     cookie_path = st.text_input("Cookies 文件路径（可选）", type="password", help="本机 Netscape 格式文件路径，用于你有权访问的登录内容。不会加入交付包。")
+    from channels_auth import login_status, start_login, SESSION_FILE
+    from link_download import is_wechat_channels
+    st.markdown("**视频号链接下载**")
+    auth_status = login_status()
+    managed_channels = bool(os.environ.get("CHANNELS_PARSER_URL"))
+    if not managed_channels:
+        st.caption(auth_status["message"])
+    if managed_channels:
+        st.caption("已配置视频号后台解析服务，直接添加链接即可；客户无需登录平台。")
+    if not managed_channels and st.button("扫码登录视频号下载"):
+        sample = next((i["source"] for o in orders for i in o["items"] if is_wechat_channels(i["source"])), "")
+        if not sample:
+            st.info("请先把视频号分享链接加入订单，再点击扫码登录。")
+        else:
+            start_login(sample)
+            st.rerun()
+    if not managed_channels and auth_status["state"] == "waiting":
+        st.info("在浏览器窗口里登录腾讯元宝，完成后点击下方刷新登录状态。")
+    if not managed_channels and st.button("刷新登录状态"):
+        st.rerun()
+    if not managed_channels and SESSION_FILE.is_file() and st.button("清除视频号下载登录"):
+        SESSION_FILE.unlink(missing_ok=True)
+        from channels_auth import write_status
+        write_status("idle", "本机登录凭证已清除")
+        st.rerun()
     with st.expander("视频号解析设置（可选）"):
         st.caption("官方分享页未提供视频时，可接入你使用的解析服务。仅将分享链接发送到填写的接口，登录 Cookies 不发送到解析服务。")
-        channels_parser = st.text_input("视频号解析接口地址", help="POST JSON {url: 分享链接}；返回 data.feedInfo.videoUrl 或 h264VideoInfo.videoUrl。")
-        channels_key = st.text_input("解析接口密钥", type="password", help="以 Bearer Authorization 发送，仅在本次页面会话中使用，不保存到订单。")
+        channels_parser = st.text_input("视频号解析接口地址", value=os.environ.get("CHANNELS_PARSER_URL", ""), help="POST JSON {url: 分享链接}；返回 data.feedInfo.videoUrl 或 h264VideoInfo.videoUrl。")
+        channels_key = st.text_input("解析接口密钥", value=os.environ.get("CHANNELS_PARSER_KEY", ""), type="password", help="以 Bearer Authorization 发送，仅在本次页面会话中使用，不保存到订单。")
 
 order = next(o for o in orders if o["id"] == selected)
 st.subheader(order["name"])
