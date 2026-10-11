@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+data/
+models/
+*.pyc
+cookies*.txt
+*.cookies.txt
+.env
+.env.*
+!.env.example
