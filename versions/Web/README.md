@@ -12,6 +12,19 @@
 
 ### 构建便携交付包
 
+Windows 桌面试用版保留此目录的界面和业务逻辑，使用 pywebview / WebView2 显示在独立窗口中。用户双击 `VideoSubtitleExtraction.exe`，关闭窗口同时关闭它的后台。Web 开发服务及其订单不受影响。
+
+构建桌面包时，在本目录安装桌面依赖并添加 `--desktop`：
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-desktop.txt
+.\.venv\Scripts\python.exe build_delivery.py --desktop --runtime-zip build-cache/python-3.12.10-embed-amd64.zip --output ../Windows/builds/新桌面版本目录
+```
+
+构建机器需要 .NET Framework 的 C# 编译器；客户需要 WebView2 Runtime 与 .NET Framework 4.6.2 或更新版本，不需要安装 Python。桌面包自带识别模型和 Python 依赖，不附带本机订单。窗口启用文件下载，导出时弹出保存对话框。开发中可运行 `python desktop_launcher.py`，使用 `--self-test` 验证窗口加载和后台关闭。
+
+不添加 `--desktop` 时仍构建以下历史浏览器便携版。
+
 在已安装本项目依赖的 Python 3.12 环境中，准备 Python 官方 `python-3.12.10-embed-amd64.zip`，确保 `models/small` 已下载，然后运行：
 
 ```powershell

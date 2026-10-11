@@ -5,7 +5,7 @@
 ## 项目目录
 
 - [versions/Web](versions/Web/README.md)：完整 Web 开发目录，包含源码、测试、启动脚本、模型和本机订单数据。双击「VideoSubtitleExtraction.cmd」启动。
-- [versions/Windows](versions/Windows/README.md)：Windows 客户便携交付包及构建输出。
+- [versions/Windows](versions/Windows/README.md)：Windows 客户桌面试用包及构建输出，双击 EXE 使用独立软件窗口。
 - [versions/macOS](versions/macOS/README.md)、[versions/Android](versions/Android/README.md)、[versions/iOS](versions/iOS/README.md)：预留平台目录，尚未开发。
 
 开发与测试在 `versions/Web` 中进行，Windows 构建从该目录读取源码并输出到 `versions/Windows/builds/`。根目录只保留仓库说明和 Git 配置。

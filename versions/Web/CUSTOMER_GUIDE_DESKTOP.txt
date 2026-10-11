@@ -1,0 +1,32 @@
+VideoSubtitleExtraction · Windows 桌面试用版
+
+一、启动
+支持 Windows 10 / 11 x64，建议 8GB 或更多内存。
+完整解压软件文件夹，双击 VideoSubtitleExtraction.exe，即可打开独立软件窗口。
+不要单独复制 EXE，不要在 ZIP 内直接运行；应解压到有写入权限的文件夹。
+自带 Python、处理依赖和 small 模型，无需安装 Python。
+窗口使用 Microsoft Edge WebView2 Runtime，并需要 .NET Framework 4.6.2 或更新版本。
+缺少 WebView2 时，请安装微软官方运行时：https://developer.microsoft.com/microsoft-edge/webview2/
+不需要启动浏览器，不需要运营者的服务器。程序只在本机启动内部后台。
+同一软件文件夹不重复打开；其他文件夹的软件使用独立后台，不影响 Web 开发服务。
+关闭软件窗口会关闭它的后台。请等待当前任务完成后再关闭，避免中断识别。
+运行中请勿移动软件目录、删除 data 或修改正在处理的原视频。
+
+二、处理与交付
+创建订单，上传音视频、导入本地文件夹或批量粘贴抖音、B站、小红书分享链接。
+点击开始才会下载和识别，默认 small 模型、CPU、本地口播提取。
+本地视频识别无需联网，平台链接下载需要联网；下载仍受链接失效、登录及平台限制影响。
+无口播或只有 BGM 的内容应留空，识别结果需要人工校对。
+保存校对结果后生成交付包，点击下载时选择保存位置。
+Excel 为编号、标题、文案三列，Word 支持标题导航，有文案的视频附 SRT / TXT。
+失败项目不会进入交付包。链接下载的临时视频会自动清理，用户上传的原文件会保留。
+
+三、数据与维护
+data 保存自己的订单、媒体和处理结果，换电脑前请备份。
+关闭软件后删除整个 data 会丢失所有订单，下次启动会重新创建。
+启动失败查看 data/desktop-launcher.log、desktop.stderr.log。
+反馈日志时注意隐藏个人信息和客户链接。
+第三方许可证保存在 runtime/Lib/site-packages 元数据目录、runtime/LICENSE.txt 和 models/small/LICENSE.txt。
+组件清单见 THIRD_PARTY.json，完整文件校验清单见 PACKAGE_MANIFEST.json。
+此包不包含提供者的客户订单、登录凭证或模型下载账号，也没有授权码及付费激活。
+本版本为桌面试用版，EXE 尚未进行商业代码签名。
