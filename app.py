@@ -18,7 +18,7 @@ def get_model(name, device):
 with st.sidebar:
     st.header("订单管理")
     with st.form("new_order"):
-        name = st.text_input("订单名称", placeholder="客户名称 / 闲鱼订单号")
+        name = st.text_input("订单名称", placeholder="客户名称")
         if st.form_submit_button("创建订单"):
             st.session_state.order_id = create_order(name)["id"]
             st.rerun()
