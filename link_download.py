@@ -3,8 +3,6 @@ from __future__ import annotations
 
 import json
 import re
-import secrets
-import time
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs, urlunparse
 
@@ -15,96 +13,19 @@ from urllib3.util.retry import Retry
 MOBILE_UA = "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36"
 
 
+def is_supported_link(url: str) -> bool:
+    parsed = urlparse(url)
+    host = (parsed.hostname or "").lower()
+    domains = ("douyin.com", "iesdouyin.com", "bilibili.com", "b23.tv", "xiaohongshu.com", "xhslink.com", "xhslink.cn")
+    return parsed.scheme in ("http", "https") and any(host == d or host.endswith("." + d) for d in domains)
+
+
 def load_cookies(session, cookie_path: str):
     if cookie_path:
         import http.cookiejar
         jar = http.cookiejar.MozillaCookieJar(cookie_path)
         jar.load(ignore_discard=True, ignore_expires=True)
         session.cookies.update(jar)
-
-
-def is_wechat_channels(url: str) -> bool:
-    parsed = urlparse(url)
-    return (parsed.hostname == "weixin.qq.com" and parsed.path.startswith("/sph/")) or (
-        parsed.hostname == "channels.weixin.qq.com" and parsed.path.startswith("/finder-preview/pages/"))
-
-
-def wechat_detail(session, url: str) -> dict:
-    parsed = urlparse(url)
-    match = re.fullmatch(r"/sph/([A-Za-z0-9_-]+)/?", parsed.path)
-    query = parse_qs(parsed.query)
-    short_id = match[1] if match else query.get("id", [""])[0]
-    export_id = query.get("eid", [""])[0]
-    if not short_id and not export_id:
-        raise ValueError("视频号链接缺少作品标识，请复制完整分享链接")
-    page = "https://channels.weixin.qq.com/finder-preview/pages/" + ("sph" if short_id else "feed")
-    token = query.get("token", [""])[0]
-    if not token:
-        token = next((c.value for c in session.cookies if c.name == "token" and
-                      (c.domain or "").lstrip(".") in ("weixin.qq.com", "channels.weixin.qq.com")), "")
-    response = session.post("https://channels.weixin.qq.com/finder-preview/api/feed/get_feed_info",
-        params={"_rid": f"{int(time.time()):x}-{secrets.token_hex(4)}", "_pageUrl": page},
-        json={"baseReq": {"generalToken": token}, **({"shortUri": short_id} if short_id else {"exportId": export_id})},
-        headers={"Referer": url if export_id else page, "Origin": "https://channels.weixin.qq.com"}, timeout=(10, 30))
-    response.raise_for_status()
-    data = response.json()
-    if data.get("errCode") not in (None, 0):
-        raise ValueError("视频号分享接口拒绝访问，请检查链接和登录 Cookies")
-    feed = data.get("data", {}).get("feedInfo", {})
-    if not feed:
-        raise ValueError("视频号未返回作品信息，链接可能过期或限制访问")
-    return feed
-
-
-def wechat_media_urls(feed: dict) -> list[str]:
-    return [url for url in [(feed.get("h264VideoInfo") or {}).get("videoUrl"),
-                           (feed.get("h265VideoInfo") or {}).get("videoUrl"), feed.get("videoUrl")] if url]
-
-
-def download_wechat_channels(item: dict, folder: Path, cookie_path: str = "",
-                            parser_url: str = "", parser_key: str = "") -> str:
-    with new_session() as session:
-        session.headers["Referer"] = "https://channels.weixin.qq.com/"
-        load_cookies(session, cookie_path)
-        feed, official_error = {}, ""
-        try:
-            feed = wechat_detail(session, item["source"])
-        except Exception:
-            official_error = "官方分享接口访问失败"
-        urls = wechat_media_urls(feed)
-        login_error = ""
-        if not urls:
-            from channels_auth import SESSION_FILE, resolve_with_saved_session
-            if SESSION_FILE.is_file():
-                try:
-                    playable = resolve_with_saved_session(item["source"])
-                    feed = wechat_detail(session, playable)
-                    urls = wechat_media_urls(feed)
-                except ValueError as exc:
-                    login_error = str(exc)
-                except Exception:
-                    login_error = "腾讯元宝解析连接失败，请检查网络后重试"
-        if not urls and parser_url:
-            if urlparse(parser_url).scheme not in ("http", "https"):
-                raise ValueError("解析接口地址必须以 https:// 或 http:// 开头")
-            # Never send platform cookies to an external resolver.
-            headers = {"Authorization": "Bearer " + parser_key} if parser_key else {}
-            try:
-                response = requests.post(parser_url, json={"url": item["source"]}, headers=headers, timeout=(10, 45))
-                response.raise_for_status()
-                payload = response.json()
-                if payload.get("errCode") not in (None, 0):
-                    raise ValueError("解析接口返回错误")
-                feed = payload.get("data", {}).get("feedInfo", {})
-                urls = wechat_media_urls(feed)
-            except requests.RequestException as exc:
-                raise ValueError("视频号解析接口连接失败或授权无效，请检查接口地址与密钥") from exc
-        if not urls:
-            raise ValueError(login_error or "此分享页没有视频地址，请在侧栏点击“扫码登录视频号下载”，完成登录后重试。")
-        item["title"] = (feed.get("description") or "视频号视频")[:200]
-        path = download_media(session, urls, folder / (item["id"] + ".mp4"))
-        item["download_engine"] = "wechat-channels-share"
-        return path
 
 
 def is_xiaohongshu(url: str) -> bool:

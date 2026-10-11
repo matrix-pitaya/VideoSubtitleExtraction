@@ -1,11 +1,11 @@
 from pathlib import Path
-import os
 import streamlit as st
+from link_download import is_supported_link
 from core import ROOT, MEDIA_EXTENSIONS, FINISHED_STATUSES, transcript_paragraphs, add_item, create_order, extract_links, load_orders, process_item, save_order, export_order
 
 st.set_page_config(page_title="视频文案工作台", page_icon="🎬", layout="wide")
 st.title("🎬 视频文案工作台")
-st.caption("接单 → 批量导入 → 口播转写 → 校对 → Excel / Word / SRT 交付")
+st.caption("抖音 / B站 / 小红书分享链接或本地视频 → 批量提取 → 校对 → Excel / Word / SRT 交付")
 
 @st.cache_resource
 def get_model(name, device):
@@ -35,35 +35,6 @@ with st.sidebar:
     language = st.selectbox("音频语言", ["中文", "自动检测", "英语"])
     extraction_mode = st.selectbox("提取方式", ["口播文案（默认，无口播留空）", "画面文字 OCR（手动选择）"])
     cookie_path = st.text_input("Cookies 文件路径（可选）", type="password", help="本机 Netscape 格式文件路径，用于你有权访问的登录内容。不会加入交付包。")
-    from channels_auth import login_status, start_login, SESSION_FILE
-    from link_download import is_wechat_channels
-    st.markdown("**视频号链接下载**")
-    auth_status = login_status()
-    managed_channels = bool(os.environ.get("CHANNELS_PARSER_URL"))
-    if not managed_channels:
-        st.caption(auth_status["message"])
-    if managed_channels:
-        st.caption("已配置视频号后台解析服务，直接添加链接即可；客户无需登录平台。")
-    if not managed_channels and st.button("扫码登录视频号下载"):
-        sample = next((i["source"] for o in orders for i in o["items"] if is_wechat_channels(i["source"])), "")
-        if not sample:
-            st.info("请先把视频号分享链接加入订单，再点击扫码登录。")
-        else:
-            start_login(sample)
-            st.rerun()
-    if not managed_channels and auth_status["state"] == "waiting":
-        st.info("在浏览器窗口里登录腾讯元宝，完成后点击下方刷新登录状态。")
-    if not managed_channels and st.button("刷新登录状态"):
-        st.rerun()
-    if not managed_channels and SESSION_FILE.is_file() and st.button("清除视频号下载登录"):
-        SESSION_FILE.unlink(missing_ok=True)
-        from channels_auth import write_status
-        write_status("idle", "本机登录凭证已清除")
-        st.rerun()
-    with st.expander("视频号解析设置（可选）"):
-        st.caption("官方分享页未提供视频时，可接入你使用的解析服务。仅将分享链接发送到填写的接口，登录 Cookies 不发送到解析服务。")
-        channels_parser = st.text_input("视频号解析接口地址", value=os.environ.get("CHANNELS_PARSER_URL", ""), help="POST JSON {url: 分享链接}；返回 data.feedInfo.videoUrl 或 h264VideoInfo.videoUrl。")
-        channels_key = st.text_input("解析接口密钥", value=os.environ.get("CHANNELS_PARSER_KEY", ""), type="password", help="以 Bearer Authorization 发送，仅在本次页面会话中使用，不保存到订单。")
 
 order = next(o for o in orders if o["id"] == selected)
 st.subheader(order["name"])
@@ -71,7 +42,7 @@ with st.expander("导入视频或链接", expanded=not order["items"]):
     with st.form("import"):
         uploads = st.file_uploader("批量选择视频 / 音频", accept_multiple_files=True, type=[e[1:] for e in MEDIA_EXTENSIONS])
         folder_input = st.text_input("或本地文件夹路径", placeholder=r"D:\客户视频", help="适合大文件；扫描此文件夹顶层的音视频。")
-        links_text = st.text_area("粘贴分享文案或视频链接", placeholder="支持一次粘贴多条分享文案，自动提取 http/https 链接。")
+        links_text = st.text_area("粘贴抖音 / B站 / 小红书分享链接", placeholder="支持一次粘贴多条分享文案，自动提取三个平台的 http/https 链接。")
         submitted = st.form_submit_button("加入订单")
     if submitted:
         existing = {i["source"] for i in order["items"]}
@@ -95,6 +66,9 @@ with st.expander("导入视频或链接", expanded=not order["items"]):
                         add_item(order, str(path.resolve()), path.name, str(path.resolve()))
                         existing.add(str(path.resolve()))
         for url in extract_links(links_text):
+            if not is_supported_link(url):
+                st.warning("已跳过其他平台链接；目前仅支持抖音、B站、小红书。")
+                continue
             if url not in existing:
                 add_item(order, url, url)
                 existing.add(url)
@@ -116,7 +90,8 @@ if items:
             st.warning(item["title"] + "：" + item["cleanup_error"])
     st.dataframe([{k: i[k] for k in ["title", "status", "error"]} for i in items], width="stretch")
     if st.button("开始 / 重试未完成视频", type="primary"):
-        pending = [i for i in items if i["status"] not in FINISHED_STATUSES]
+        pending = [i for i in items if i["status"] not in FINISHED_STATUSES and
+                   (not i["source"].startswith(("http://", "https://")) or is_supported_link(i["source"]))]
         if pending:
             try:
                 with st.spinner("加载模型；首次运行需联网下载，请耐心等待…"):
@@ -127,8 +102,7 @@ if items:
                     status.write(f"正在处理 {index + 1}/{len(pending)}：{item['title']}")
                     process_item(order, item, model, {"中文": "zh", "英语": "en", "自动检测": None}[language], cookie_path,
                                  on_progress=lambda stage: status.write(f"{index + 1}/{len(pending)} · {stage}：{item['title']}"),
-                                 mode="ocr" if extraction_mode.startswith("画面") else "audio",
-                                 channels_parser=channels_parser, channels_key=channels_key)
+                                 mode="ocr" if extraction_mode.startswith("画面") else "audio")
                     progress.progress((index + 1) / len(pending))
                 st.rerun()
             except Exception as exc:

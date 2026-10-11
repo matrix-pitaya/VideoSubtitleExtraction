@@ -24,7 +24,7 @@ class WorkflowTests(unittest.TestCase):
             with self.subTest(fail=fail), tempfile.TemporaryDirectory() as tmp, patch.object(core, "ROOT", Path(tmp)):
                 order = core.create_order("链接订单")
                 item = core.add_item(order, "https://example.com/video", "视频")
-                def downloader(item, folder, cookie, channels_parser="", channels_key=""):
+                def downloader(item, folder, cookie):
                     folder.mkdir(parents=True)
                     path = folder / "video.mp4"
                     path.write_bytes(b"test")

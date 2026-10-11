@@ -11,7 +11,7 @@ from packaging.requirements import Requirement
 from packaging.markers import default_environment
 
 ROOT = Path(__file__).resolve().parent
-SOURCES = ['app.py', 'core.py', 'link_download.py', 'screen_text.py', 'channels_auth.py',
+SOURCES = ['app.py', 'core.py', 'link_download.py', 'screen_text.py',
            'download_models.py', 'portable_launcher.py']
 
 
