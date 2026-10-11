@@ -84,8 +84,13 @@ def add_item(order: dict, source: str, title: str, local_path: str = "") -> dict
     return item
 
 
-def download(item: dict, folder: Path, cookie_path: str = "") -> str:
-    from link_download import is_douyin, download_douyin
+def download(item: dict, folder: Path, cookie_path: str = "", channels_parser: str = "", channels_key: str = "") -> str:
+    from link_download import is_douyin, download_douyin, is_xiaohongshu, download_xiaohongshu
+    from link_download import is_wechat_channels, download_wechat_channels
+    if is_xiaohongshu(item["source"]):
+        return download_xiaohongshu(item, folder, cookie_path)
+    if is_wechat_channels(item["source"]):
+        return download_wechat_channels(item, folder, cookie_path, channels_parser, channels_key)
     platform_error = ""
     if is_douyin(item["source"]):
         try:
@@ -115,7 +120,7 @@ def download(item: dict, folder: Path, cookie_path: str = "") -> str:
     return path
 
 
-def process_item(order: dict, item: dict, model, language: str | None, cookie_path: str = "", on_progress=None, mode: str = "audio") -> None:
+def process_item(order: dict, item: dict, model, language: str | None, cookie_path: str = "", on_progress=None, mode: str = "audio", channels_parser: str = "", channels_key: str = "") -> None:
     is_link = item["source"].startswith(("https://", "http://"))
     download_folder = ROOT / order["id"] / "media" / item["id"]
     try:
@@ -128,7 +133,7 @@ def process_item(order: dict, item: dict, model, language: str | None, cookie_pa
             save_order(order)
             if on_progress:
                 on_progress("解析并下载链接")
-            item["path"] = download(item, download_folder, cookie_path)
+            item["path"] = download(item, download_folder, cookie_path, channels_parser, channels_key)
             save_order(order)
         item["status"] = "提取口播字幕"
         save_order(order)

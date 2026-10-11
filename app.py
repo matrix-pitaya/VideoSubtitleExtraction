@@ -34,6 +34,10 @@ with st.sidebar:
     language = st.selectbox("音频语言", ["中文", "自动检测", "英语"])
     extraction_mode = st.selectbox("提取方式", ["口播文案（默认，无口播留空）", "画面文字 OCR（手动选择）"])
     cookie_path = st.text_input("Cookies 文件路径（可选）", type="password", help="本机 Netscape 格式文件路径，用于你有权访问的登录内容。不会加入交付包。")
+    with st.expander("视频号解析设置（可选）"):
+        st.caption("官方分享页未提供视频时，可接入你使用的解析服务。仅将分享链接发送到填写的接口，登录 Cookies 不发送到解析服务。")
+        channels_parser = st.text_input("视频号解析接口地址", help="POST JSON {url: 分享链接}；返回 data.feedInfo.videoUrl 或 h264VideoInfo.videoUrl。")
+        channels_key = st.text_input("解析接口密钥", type="password", help="以 Bearer Authorization 发送，仅在本次页面会话中使用，不保存到订单。")
 
 order = next(o for o in orders if o["id"] == selected)
 st.subheader(order["name"])
@@ -97,7 +101,8 @@ if items:
                     status.write(f"正在处理 {index + 1}/{len(pending)}：{item['title']}")
                     process_item(order, item, model, {"中文": "zh", "英语": "en", "自动检测": None}[language], cookie_path,
                                  on_progress=lambda stage: status.write(f"{index + 1}/{len(pending)} · {stage}：{item['title']}"),
-                                 mode="ocr" if extraction_mode.startswith("画面") else "audio")
+                                 mode="ocr" if extraction_mode.startswith("画面") else "audio",
+                                 channels_parser=channels_parser, channels_key=channels_key)
                     progress.progress((index + 1) / len(pending))
                 st.rerun()
             except Exception as exc:
