@@ -1,5 +1,7 @@
 # 视频文案工作台
 
+平台版本和交付入口统一整理在 [versions](versions/README.md)：当前网页版、Windows、macOS、Android、iOS。当前网页版与 Windows 便携包已可用，其他平台为预留目录，尚未开发。
+
 本地部署的接单工具，使用 Streamlit + faster-whisper + yt-dlp。批量音视频口播转写，逐句校对，输出 Excel、Word、SRT、TXT 和 ZIP。订单状态保存在 `data/`，重启后可继续未完成任务；失败项目单独重试，成功项目跳过。
 
 当前链接提取仅支持抖音、B站、小红书，其他平台链接在导入时跳过。旧订单中其他平台的记录保留，但不会参与重试；本地音视频文件继续支持。
