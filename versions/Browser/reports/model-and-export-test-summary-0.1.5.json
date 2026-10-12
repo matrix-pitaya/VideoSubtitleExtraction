@@ -1,0 +1,31 @@
+{
+  "prototype": "0.1.5",
+  "desktopRecognitionAndExports": {
+    "passed": 6,
+    "failed": 0,
+    "scope": "medium actual sample; unsupported model/mode policy; corrupt cache; unavailable storage; quota fault; cancel/retry, simplified TXT/SRT/DOCX/XLSX, empty speech XLSX and persistent cache",
+    "evidence": "Playwright completed: 6 passed (5.2m)"
+  },
+  "uiSelectorChecks": {
+    "passed": 3,
+    "failed": 0,
+    "environments": [
+      "desktop-edge",
+      "android-emulated",
+      "iphone-emulated-webkit"
+    ],
+    "stats": {
+      "startTime": "2026-10-11T18:38:01.045Z",
+      "duration": 4460.657999999999,
+      "expected": 3,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "realPhone": false,
+  "unitTestsPassed": 8,
+  "encoderGraphTestsPassed": 3,
+  "buildPassed": true,
+  "largeV3": "suspended after failed browser load; removed from UI and registry"
+}

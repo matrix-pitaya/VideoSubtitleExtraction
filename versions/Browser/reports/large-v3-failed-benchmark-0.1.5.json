@@ -1,0 +1,98 @@
+{
+  "realPhone": false,
+  "browserVersion": "155.0.4283.45",
+  "status": "ENGINE_FAILURE：识别引擎运行失败，设备可能不支持该模式或可用内存不足。请重试兼容模式或使用系统浏览器。",
+  "texts": [],
+  "report": {
+    "schemaVersion": "1.0",
+    "prototype": "0.1.5",
+    "createdAt": "2026-10-11T18:22:42.549Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "platform": "Win32",
+    "hardwareConcurrency": 16,
+    "deviceMemoryGiB": 16,
+    "secureContext": true,
+    "model": {
+      "model": "whisper-large-v3",
+      "repository": "Xenova/whisper-large-v3",
+      "revision": "67bf02d92b7754a1ff82a7f8545f8b8c378b2ef0",
+      "multilingual": true,
+      "dtype": "q8",
+      "totalBytes": 1563087423,
+      "encoderGraphOptimization": {
+        "bytes": 645258493,
+        "sha256": "cd500c3457e8e70a5b7399cce3e977c22102dadb33a29b450ae5b1213db26269",
+        "removedOutputs": [
+          "encoder_attentions.0",
+          "encoder_attentions.1",
+          "encoder_attentions.2",
+          "encoder_attentions.3",
+          "encoder_attentions.4",
+          "encoder_attentions.5",
+          "encoder_attentions.6",
+          "encoder_attentions.7",
+          "encoder_attentions.8",
+          "encoder_attentions.9",
+          "encoder_attentions.10",
+          "encoder_attentions.11",
+          "encoder_attentions.12",
+          "encoder_attentions.13",
+          "encoder_attentions.14",
+          "encoder_attentions.15",
+          "encoder_attentions.16",
+          "encoder_attentions.17",
+          "encoder_attentions.18",
+          "encoder_attentions.19",
+          "encoder_attentions.20",
+          "encoder_attentions.21",
+          "encoder_attentions.22",
+          "encoder_attentions.23",
+          "encoder_attentions.24",
+          "encoder_attentions.25",
+          "encoder_attentions.26",
+          "encoder_attentions.27",
+          "encoder_attentions.28",
+          "encoder_attentions.29",
+          "encoder_attentions.30",
+          "encoder_attentions.31"
+        ],
+        "method": "remove-unused-encoder-output-fields-v1"
+      }
+    },
+    "samples": [
+      {
+        "success": false,
+        "errorCode": "ENGINE_FAILURE",
+        "totalMs": 72811.79999999702
+      }
+    ],
+    "errors": [
+      {
+        "code": "CACHE_WRITE_FAILED",
+        "phase": "cache"
+      },
+      {
+        "code": "ENGINE_FAILURE",
+        "phase": "sample",
+        "detail": "Failed to fetch"
+      }
+    ],
+    "limits": {
+      "maxFileBytes": 104857600,
+      "maxDecodedBytes": 134217728,
+      "sampleRate": 16000,
+      "chunkSeconds": 20,
+      "overlapSeconds": 2
+    },
+    "realDeviceVerified": false,
+    "capabilities": {
+      "secureContext": true,
+      "webgpu": false,
+      "webgpuEnabled": false,
+      "wasm": true,
+      "audioDecoder": true,
+      "worker": true
+    },
+    "deviceLabel": ""
+  }
+}

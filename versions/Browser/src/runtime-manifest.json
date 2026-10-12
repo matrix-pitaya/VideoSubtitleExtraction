@@ -1,0 +1,101 @@
+{
+  "package": "onnxruntime-web",
+  "version": "1.22.0-dev.20250409-89f8206ba4",
+  "files": [
+    {
+      "path": "ort-wasm-simd-threaded.jsep.mjs",
+      "bytes": 44484,
+      "sha256": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9"
+    },
+    {
+      "path": "ort-wasm-simd-threaded.jsep.wasm",
+      "bytes": 21596019,
+      "sha256": "c46655e8a94afc45338d4cb2b840475f88e5012d524509916e505079c00bfa39"
+    },
+    {
+      "path": "ort-wasm-simd-threaded.mjs",
+      "bytes": 20856,
+      "sha256": "43c25054b6b9ac000f786c65545ff83a45f871e0e310e8c2f4d48a363bb66db4"
+    },
+    {
+      "path": "ort-wasm-simd-threaded.wasm",
+      "bytes": 11133407,
+      "sha256": "f061472c6e77d6d50d079aacdc0ff9b63fee287ddd2cbf46cf62438d3891de2b"
+    },
+    {
+      "path": "ort.all.bundle.min.mjs",
+      "bytes": 832611,
+      "sha256": "beeb67c01ba936aadd43250df2457a89ba2500ad0dbdbfa09f9ddcfc33439697"
+    },
+    {
+      "path": "ort.all.min.mjs",
+      "bytes": 789326,
+      "sha256": "66a5c63b53b8f5a31702076983c682604dfef7ddabbb6b928337e29850854ba9"
+    },
+    {
+      "path": "ort.all.mjs",
+      "bytes": 5655719,
+      "sha256": "d80a4e7c14bb7afcb7788bed499f5cef13dc0b335d49462e1b0616e503092a3a"
+    },
+    {
+      "path": "ort.bundle.min.mjs",
+      "bytes": 398170,
+      "sha256": "96e80b413dda387fbcefbd2bb0015f6708323767cc0dd5383260106582e77781"
+    },
+    {
+      "path": "ort.min.mjs",
+      "bytes": 355057,
+      "sha256": "70869c209b39097fe577ac4c1ae60cbfdf1574747b2d644423c16ffd9af7f2b5"
+    },
+    {
+      "path": "ort.mjs",
+      "bytes": 2528294,
+      "sha256": "9127f0db451488f1adec5d66be7b269befe68808d2a071b7ec9bd00b78b7d800"
+    },
+    {
+      "path": "ort.node.min.mjs",
+      "bytes": 25219,
+      "sha256": "59cc79101d678aaf085d52f97d37195b1ed7a4d3bb6177d53038c5be12251a83"
+    },
+    {
+      "path": "ort.wasm.bundle.min.mjs",
+      "bytes": 48022,
+      "sha256": "ce886d4ba4d4612eb288715bc23794dd3fadbc9c83e27d2d984df4d1ba149524"
+    },
+    {
+      "path": "ort.wasm.min.mjs",
+      "bytes": 48008,
+      "sha256": "0cb5ac5be2c414d5b9e361f857108630c6d6e24a5ab9be3cf5f761de55289e94"
+    },
+    {
+      "path": "ort.wasm.mjs",
+      "bytes": 545806,
+      "sha256": "98fe788f08034b3417c1fa94493a9dd0089485e53fa7010b13f7a137977549fa"
+    },
+    {
+      "path": "ort.webgl.min.mjs",
+      "bytes": 454034,
+      "sha256": "04a111069b2b60a74d4eb87cf21a2744ac1cb41c14bc9bec0e5966244cd84f6c"
+    },
+    {
+      "path": "ort.webgl.mjs",
+      "bytes": 3362598,
+      "sha256": "abe1638a6953967c85a9ddcfc3449fab483ed3c3cff6c82e0f5c400387a07a2b"
+    },
+    {
+      "path": "ort.webgpu.bundle.min.mjs",
+      "bytes": 398191,
+      "sha256": "315910a5b1c94f1394d7d7d12f753c16085428b636bb6c8d0e3867c66a5acdf0"
+    },
+    {
+      "path": "ort.webgpu.min.mjs",
+      "bytes": 355071,
+      "sha256": "0e8b345c2fa92adac1a309e0d01fb8ba3aaf1e42140734bbed6f4ffad0bfcfd6"
+    },
+    {
+      "path": "ort.webgpu.mjs",
+      "bytes": 2528301,
+      "sha256": "5164df5b085eb55c77dcf8feba8f6c66e823c3cd693fc66e0f2bb2386b69a705"
+    }
+  ]
+}

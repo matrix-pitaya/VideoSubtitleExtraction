@@ -1,0 +1,22 @@
+{
+  "checks": [
+    "fixed small and WASM",
+    "cancel and background retry",
+    "DOCX ZIP and Chinese heading/body validation",
+    "XLSX columns and Chinese cell values",
+    "empty transcript export",
+    "small persistent cache reload with zero model download"
+  ],
+  "unitTestsPassed": 7,
+  "prototype": "0.1.4",
+  "buildPassed": true,
+  "scope": "Windows Edge / mobile Edge and WebKit viewports; not real phone tests",
+  "stats": {
+    "startTime": "2026-10-11T17:41:57.336Z",
+    "duration": 260174.729,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

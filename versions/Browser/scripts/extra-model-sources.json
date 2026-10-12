@@ -1,0 +1,170 @@
+{
+  "medium": {
+    "model": "whisper-medium",
+    "repository": "Xenova/whisper-medium",
+    "revision": "8c5b90880ab9f79487ab33613413431bf661d595",
+    "files": {
+      "config.json": {
+        "kind": "git",
+        "expected": "befa1a03af14cf6a33435892a68e62301facabe0",
+        "bytes": 2256,
+        "sha256": "a9c2ef0290a8fa3d203231dd01a074891b7f595d5d305ead2aac8ac5e6e47105"
+      },
+      "generation_config.json": {
+        "kind": "git",
+        "expected": "7d1e4c906a45be8ba14e5b14ba7cf27784c7f3fd",
+        "bytes": 3694,
+        "sha256": "c57f39da43ff86f60451a1c978743ca48fd995ac5d7e3c3534f856d0bed57770"
+      },
+      "preprocessor_config.json": {
+        "kind": "git",
+        "expected": "91876762a536a746d268353c5cba57286e76b058",
+        "bytes": 339,
+        "sha256": "a6a76d28c93edb273669eb9e0b0636a2bddbb1272c3261e47b7ca6dfdbac1b8d"
+      },
+      "tokenizer.json": {
+        "kind": "git",
+        "expected": "1e95340ff836fad1b5932e800fb7b8c5e6d78a74",
+        "bytes": 2480466,
+        "sha256": "27fc476bfe7f17299480be2273fc0608e4d5a99aba2ab5dec5374b4482d1a566"
+      },
+      "tokenizer_config.json": {
+        "kind": "git",
+        "expected": "d13b786c04765fb1a06492b53587752cd67665ea",
+        "bytes": 282683,
+        "sha256": "2a4c4281cf9f51ac6ccc406fdc711a087afe6530f671fa7b80953edc498275ce"
+      },
+      "onnx/encoder_model_quantized.onnx": {
+        "kind": "sha256",
+        "expected": "7d6b4a00e441271646327f8a71b6e1bd1a305013cd914b51ddd76919c59ee3af",
+        "bytes": 313468028,
+        "sha256": "7d6b4a00e441271646327f8a71b6e1bd1a305013cd914b51ddd76919c59ee3af"
+      },
+      "onnx/decoder_model_merged_quantized.onnx": {
+        "kind": "sha256",
+        "expected": "2cdd6d06ebdf9d993d21117bfeeb7e9b399521b7766d3df77c54a85d6dcf3c08",
+        "bytes": 462661606,
+        "sha256": "2cdd6d06ebdf9d993d21117bfeeb7e9b399521b7766d3df77c54a85d6dcf3c08"
+      }
+    },
+    "encoderGraphOptimization": {
+      "bytes": 313466574,
+      "sha256": "5120d20e2623825bd31c0f955368638fd08971ab4172d4fe9abfaaa24917d39e",
+      "removedOutputs": [
+        "encoder_attentions.0",
+        "encoder_attentions.1",
+        "encoder_attentions.2",
+        "encoder_attentions.3",
+        "encoder_attentions.4",
+        "encoder_attentions.5",
+        "encoder_attentions.6",
+        "encoder_attentions.7",
+        "encoder_attentions.8",
+        "encoder_attentions.9",
+        "encoder_attentions.10",
+        "encoder_attentions.11",
+        "encoder_attentions.12",
+        "encoder_attentions.13",
+        "encoder_attentions.14",
+        "encoder_attentions.15",
+        "encoder_attentions.16",
+        "encoder_attentions.17",
+        "encoder_attentions.18",
+        "encoder_attentions.19",
+        "encoder_attentions.20",
+        "encoder_attentions.21",
+        "encoder_attentions.22",
+        "encoder_attentions.23"
+      ],
+      "method": "remove-unused-encoder-output-fields-v1"
+    }
+  },
+  "large-v3": {
+    "model": "whisper-large-v3",
+    "repository": "Xenova/whisper-large-v3",
+    "revision": "67bf02d92b7754a1ff82a7f8545f8b8c378b2ef0",
+    "files": {
+      "config.json": {
+        "kind": "git",
+        "expected": "fe16f6c2c7ccfd12aafa64fd0d15e362c00cdb24",
+        "bytes": 1449,
+        "sha256": "9789834324881505abe59bc8cab8d689ab42f0183fbe3b6019c94709dde0173f"
+      },
+      "generation_config.json": {
+        "kind": "git",
+        "expected": "65ae097b1a35eec500d5edd9936be2d7725d47c0",
+        "bytes": 3841,
+        "sha256": "d0af5dde8bd7f0a9f4fb369ac3d8a8f2c8791ccc3419d94dcef36e5278a574d1"
+      },
+      "preprocessor_config.json": {
+        "kind": "git",
+        "expected": "931c77a740890c46365c7ae0c9d350ba3cca908f",
+        "bytes": 340,
+        "sha256": "7ccc62c6f2765af1f3b46c00c9b5894426835a05021c8b9c01eecb6dfb542711"
+      },
+      "tokenizer.json": {
+        "kind": "git",
+        "expected": "3a5e2ba63acdcac9a19ba56cf9bd27f185bfff61",
+        "bytes": 2480617,
+        "sha256": "6d8cbd7cd0d8d5815e478dac67b85a26bbe77c1f5e0c6d76d1ce2abc0e5f21ca"
+      },
+      "tokenizer_config.json": {
+        "kind": "git",
+        "expected": "06ffdc8308eae6bb7bd1fdd81e94b0a881a539ab",
+        "bytes": 282843,
+        "sha256": "844b642c73a91359722f47b35705f7174686df33d252695d8572cf9ac03a6389"
+      },
+      "onnx/encoder_model_quantized.onnx": {
+        "kind": "sha256",
+        "expected": "0b8641e5caa47d0227ec4acd9aaccb281e1e02d3ec0f2f704a373e08cecdde8e",
+        "bytes": 645260435,
+        "sha256": "0b8641e5caa47d0227ec4acd9aaccb281e1e02d3ec0f2f704a373e08cecdde8e"
+      },
+      "onnx/decoder_model_merged_quantized.onnx": {
+        "kind": "sha256",
+        "expected": "3a80cd1c62771d59595f8b64d168cbd151cf6cba1d29aa340e39b4ed74059f30",
+        "bytes": 915059840,
+        "sha256": "3a80cd1c62771d59595f8b64d168cbd151cf6cba1d29aa340e39b4ed74059f30"
+      }
+    },
+    "encoderGraphOptimization": {
+      "bytes": 645258493,
+      "sha256": "cd500c3457e8e70a5b7399cce3e977c22102dadb33a29b450ae5b1213db26269",
+      "removedOutputs": [
+        "encoder_attentions.0",
+        "encoder_attentions.1",
+        "encoder_attentions.2",
+        "encoder_attentions.3",
+        "encoder_attentions.4",
+        "encoder_attentions.5",
+        "encoder_attentions.6",
+        "encoder_attentions.7",
+        "encoder_attentions.8",
+        "encoder_attentions.9",
+        "encoder_attentions.10",
+        "encoder_attentions.11",
+        "encoder_attentions.12",
+        "encoder_attentions.13",
+        "encoder_attentions.14",
+        "encoder_attentions.15",
+        "encoder_attentions.16",
+        "encoder_attentions.17",
+        "encoder_attentions.18",
+        "encoder_attentions.19",
+        "encoder_attentions.20",
+        "encoder_attentions.21",
+        "encoder_attentions.22",
+        "encoder_attentions.23",
+        "encoder_attentions.24",
+        "encoder_attentions.25",
+        "encoder_attentions.26",
+        "encoder_attentions.27",
+        "encoder_attentions.28",
+        "encoder_attentions.29",
+        "encoder_attentions.30",
+        "encoder_attentions.31"
+      ],
+      "method": "remove-unused-encoder-output-fields-v1"
+    }
+  }
+}

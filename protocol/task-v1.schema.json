@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:videosubtitleextraction:task:1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "taskId", "title", "language", "state", "segments"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "taskId": { "type": "string", "minLength": 1 },
+    "title": { "type": "string" },
+    "language": { "enum": ["zh", "auto"] },
+    "state": { "enum": ["ready", "running", "needs_review", "completed", "no_speech", "canceled", "failed"] },
+    "segments": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["start", "end", "text"], "properties": { "start": { "type": "number", "minimum": 0 }, "end": { "type": "number", "exclusiveMinimum": 0 }, "text": { "type": "string", "minLength": 1 } } } },
+    "error": { "type": "object", "additionalProperties": false, "required": ["code", "message"], "properties": { "code": { "type": "string" }, "message": { "type": "string" } } }
+  },
+  "$comment": "Additionally enforce finite seconds, end > start, ordered nonoverlapping segments, and empty segments for no_speech. Tasks are local untrusted client data, not billing evidence."
+}

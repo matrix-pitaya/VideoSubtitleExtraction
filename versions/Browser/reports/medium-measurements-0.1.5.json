@@ -1,0 +1,101 @@
+{
+  "realPhone": false,
+  "browserVersion": "155.0.4283.45",
+  "status": "已生成 2 段候选口播，请校对后保存。",
+  "texts": [
+    "你好,这是浏览器本地识别测试。",
+    "视频不会上传到服务器。"
+  ],
+  "report": {
+    "schemaVersion": "1.0",
+    "prototype": "0.1.5",
+    "createdAt": "2026-10-11T18:32:40.315Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "platform": "Win32",
+    "hardwareConcurrency": 16,
+    "deviceMemoryGiB": 16,
+    "secureContext": true,
+    "model": {
+      "model": "whisper-medium",
+      "repository": "Xenova/whisper-medium",
+      "revision": "8c5b90880ab9f79487ab33613413431bf661d595",
+      "multilingual": true,
+      "dtype": "q8",
+      "totalBytes": 778897618,
+      "encoderGraphOptimization": {
+        "bytes": 313466574,
+        "sha256": "5120d20e2623825bd31c0f955368638fd08971ab4172d4fe9abfaaa24917d39e",
+        "removedOutputs": [
+          "encoder_attentions.0",
+          "encoder_attentions.1",
+          "encoder_attentions.2",
+          "encoder_attentions.3",
+          "encoder_attentions.4",
+          "encoder_attentions.5",
+          "encoder_attentions.6",
+          "encoder_attentions.7",
+          "encoder_attentions.8",
+          "encoder_attentions.9",
+          "encoder_attentions.10",
+          "encoder_attentions.11",
+          "encoder_attentions.12",
+          "encoder_attentions.13",
+          "encoder_attentions.14",
+          "encoder_attentions.15",
+          "encoder_attentions.16",
+          "encoder_attentions.17",
+          "encoder_attentions.18",
+          "encoder_attentions.19",
+          "encoder_attentions.20",
+          "encoder_attentions.21",
+          "encoder_attentions.22",
+          "encoder_attentions.23"
+        ],
+        "method": "remove-unused-encoder-output-fields-v1"
+      }
+    },
+    "samples": [
+      {
+        "success": true,
+        "backend": "wasm",
+        "model": {
+          "id": 3,
+          "type": "model-ready",
+          "modelName": "whisper-medium",
+          "backend": "wasm",
+          "loadMs": 33866.40000000596,
+          "cachedBytes": 0,
+          "downloadedBytes": 778897618,
+          "totalBytes": 778897618,
+          "revision": "8c5b90880ab9f79487ab33613413431bf661d595",
+          "storage": "indexeddb"
+        },
+        "durationSeconds": 7.32,
+        "decodeMs": 2.8999999910593033,
+        "inferenceMs": 62576.69999998808,
+        "totalMs": 96515.40000000596
+      }
+    ],
+    "errors": [],
+    "limits": {
+      "maxFileBytes": 104857600,
+      "maxDecodedBytes": 134217728,
+      "sampleRate": 16000,
+      "chunkSeconds": 20,
+      "overlapSeconds": 2
+    },
+    "realDeviceVerified": false,
+    "capabilities": {
+      "secureContext": true,
+      "webgpu": false,
+      "webgpuEnabled": false,
+      "wasm": true,
+      "audioDecoder": true,
+      "worker": true
+    },
+    "deviceLabel": ""
+  },
+  "diagnostics": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

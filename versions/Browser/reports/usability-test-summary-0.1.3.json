@@ -1,0 +1,21 @@
+{
+  "unitTestsPassed": 7,
+  "prototype": "0.1.3",
+  "scope": "Windows Edge and WebKit with mobile viewports, not real phones",
+  "buildPassed": true,
+  "stats": {
+    "startTime": "2026-10-11T17:13:13.37Z",
+    "duration": 99529.245,
+    "expected": 11,
+    "skipped": 4,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "checks": [
+    "cancel and background retry",
+    "Simplified Chinese editing and TXT/SRT export",
+    "model switching requires validation",
+    "insecure origin and model integrity",
+    "responsive workbench without horizontal overflow"
+  ]
+}

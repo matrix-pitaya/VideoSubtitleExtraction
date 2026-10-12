@@ -1,0 +1,19 @@
+{
+  "evidence": "User-supplied browser report and user observations, with device identity read by ADB. No automated phone browser inspection.",
+  "observedDevice": { "model": "Redmi K50", "modelCode": "22041211AC", "androidVersion": "12", "chromePackageVersion": "151.0.7922.71" },
+  "userFeedback": { "chineseSampleRecognized": true, "txtOpenedAsGarbled": true, "fileSizeLimitBlocked26Point91MB": true, "galleryRequested": true, "songQualityLowerThanPythonApp": true, "actualSongTextAndMediaProvided": false },
+  "reportedPrototype": "0.1.0",
+  "followUpFeedback": { "txtChineseAfterFixConfirmedNormal": true, "remove60SecondLimitRequested": true, "pairedGalleryAndFileUIRequested": true, "smallModelPhoneVerified": false },
+  "createdAt": "2026-10-11T16:15:41.838Z",
+  "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36",
+  "platform": "Linux armv81", "hardwareConcurrency": 8, "deviceMemoryGiB": 8, "secureContext": true,
+  "model": { "model": "whisper-tiny", "repository": "onnx-community/whisper-tiny", "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7", "multilingual": true, "dtype": "q8", "totalBytes": 43613734 },
+  "samples": [
+    { "success": true, "backend": "wasm", "model": { "id": 3, "type": "model-ready", "backend": "wasm", "loadMs": 6209, "cachedBytes": 0, "downloadedBytes": 43613734, "totalBytes": 43613734, "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7", "storage": "indexeddb" }, "durationSeconds": 7.32, "decodeMs": 11.200000047683716, "inferenceMs": 4216.100000023842, "totalMs": 10487.699999988079 },
+    { "success": true, "backend": "wasm", "model": { "id": 6, "type": "model-ready", "backend": "wasm", "loadMs": 0, "cachedBytes": 0, "downloadedBytes": 0, "totalBytes": 43613734, "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7", "storage": "loaded-engine", "reused": true }, "durationSeconds": 7.32, "decodeMs": 3.5, "inferenceMs": 4014.199999988079, "totalMs": 4037.699999988079 }
+  ],
+  "errors": [], "limits": { "maxFileBytes": 26214400, "maxSeconds": 60, "sampleRate": 16000, "chunkSeconds": 20, "overlapSeconds": 2 },
+  "clientRealDeviceVerified": false,
+  "capabilities": { "secureContext": true, "webgpu": true, "wasm": true, "audioDecoder": true, "worker": true },
+  "notes": ["UA-reduced Android 10 is not the ADB-observed Android 12 version.", "Second run reused a live model; not a refresh/persistent-cache test.", "Adapter availability does not prove successful WebGPU inference.", "No actual recognized text/song file supplied, so no phone CER calculated.", "0.1.1 fixes and base model require follow-up real-phone validation."]
+}

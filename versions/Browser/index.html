@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#ff4b4b" />
+<title>VideoSubtitleExtraction · 视频文案工作台</title>
+</head>
+<body>
+<div class="workbench">
+<header class="page-header"><div><span class="brand">VideoSubtitleExtraction</span><h1>🎬 视频文案工作台</h1><p>导入视频 → 本地识别 → 校对字幕 → 保存文案</p></div><span class="badge">浏览器本地版 · 原型</span></header>
+<aside class="sidebar" aria-label="识别设置">
+<section aria-labelledby="compat-title"><h2 id="compat-title">识别设置</h2>
+<label for="model-profile">识别模型</label><select id="model-profile"><option value="small">small · 默认（约 240 MiB）</option><option value="medium">medium（约 743 MiB）</option></select>
+<div class="setting-info"><span>计算模式</span><strong>本地计算（WASM）</strong></div>
+<div class="setting-info"><span>音频语言</span><strong>中文</strong><span>输出文字</span><strong>简体中文</strong><span>提取方式</span><strong>口播文案</strong></div>
+<p id="model-help" class="hint">默认 small；medium 模型更大。导入视频或音频后即可识别，首次使用模型建议连接 Wi-Fi。手机性能仍需实测，文案需校对。</p>
+<p id="compat-result" role="status"></p>
+<div id="capabilities" class="capabilities" aria-live="polite">正在检测浏览器能力…</div>
+<div class="fallback"><p class="hint">内置浏览器运行失败时，可复制链接，用系统浏览器打开。</p><button id="copy-link">复制当前链接</button></div>
+</section>
+</aside>
+<main id="app" class="workspace">
+<div class="workspace-heading"><h2>本地视频任务</h2><span class="local-badge">在本设备识别 · 文件不上传</span></div>
+<section aria-labelledby="file-title"><h2 id="file-title">导入视频或音频</h2>
+<p>从图库选择视频，或从文件中选择视频、音频。</p>
+<input id="media" type="file" hidden accept=".mp4,.mov,.m4a,.mp3,.wav,video/mp4,video/quicktime,audio/*" />
+<input id="gallery" type="file" accept="video/*" hidden />
+<div class="actions import-actions"><button id="gallery-button" class="primary">图库</button><button id="file-button">文件</button></div>
+<p id="file-info" class="file-info">尚未选择文件</p>
+<p id="limits" class="hint"></p>
+<p class="hint">支持 WAV、MP3、MP4/AAC；MP4 中的 AAC-LC 在本地快速解码，其他浏览器支持的音轨会尝试系统解码。MOV 等格式取决于浏览器解码能力。目前为单文件任务，尚未接入订单、批量和平台链接。</p>
+</section>
+<section aria-labelledby="run-title"><h2 id="run-title">识别任务</h2>
+<div class="actions"><button id="start" class="primary" disabled>开始本地识别</button><button id="cancel" disabled>取消</button></div>
+<p id="status" role="status">请选择视频或音频文件。</p><progress id="progress" max="1" value="0" aria-label="识别进度"></progress>
+<p id="download-progress" class="hint"></p><p id="wake-status" class="hint"></p>
+<p class="notice">识别时请保持页面在前台。切到后台、锁屏或刷新可能中断任务；取消后可重试，已显示的分段可先保存。</p>
+</section>
+<section aria-labelledby="result-title"><h2 id="result-title">校对字幕和文案</h2>
+<p id="result-warning" class="hint">默认输出简体中文。纯音乐、伴奏和噪声可能生成错误文字，请听原音校对；无口播可清空。</p>
+<label for="title">交付标题</label><input id="title" type="text" maxlength="200" placeholder="文件标题" />
+<div id="segments"></div>
+<label class="check"><input id="reviewed" type="checkbox" />我已听取原音并校对，确认这些文字是实际口播</label>
+<div class="actions"><button id="docx" disabled>保存 Word</button><button id="xlsx" disabled>保存 Excel</button><button id="txt" disabled>保存 TXT</button><button id="srt" disabled>保存 SRT</button><button id="share" disabled>分享 TXT / SRT</button></div><p id="save-status" role="status"></p>
+</section>
+<details><summary>设备测试与诊断</summary><p class="hint">报告包含设备能力、样例性能和错误码，不包含导入文件名、音视频或识别文字。安卓和 iPhone 完整兼容性仍需真机验收。</p><label for="device-name">设备型号（可选）</label><input id="device-name" placeholder="例如：红米 K50" /><button id="report">下载检测报告 JSON</button></details>
+</main>
+<footer>VideoSubtitleExtraction · 本地识别原型 · 未接入支付或兑换码</footer>
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

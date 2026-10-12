@@ -17,3 +17,8 @@ versions/Windows/SHA256.txt
 
 versions/Windows/builds/
 versions/Windows/VideoSubtitleExtraction*.zip
+node_modules/
+versions/Browser/test-results/
+versions/Browser/playwright-report/
+versions/Browser/artifacts/
+versions/Browser/public/runtime/

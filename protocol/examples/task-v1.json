@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0",
+  "taskId": "fixture-001",
+  "title": "中文短视频测试",
+  "language": "zh",
+  "state": "completed",
+  "segments": [
+    { "start": 0.125, "end": 1.999, "text": "你好，这是测试。" },
+    { "start": 2, "end": 3.456, "text": "视频不会上传。" }
+  ]
+}

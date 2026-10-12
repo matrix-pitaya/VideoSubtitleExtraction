@@ -1,0 +1,18 @@
+{
+  "prototype": "0.1.4",
+  "checks": [
+    "Worker rejects WebGPU/auto/tiny/base before downloading",
+    "corrupt cache repaired",
+    "storage unavailable fallback",
+    "storage quota failure fallback"
+  ],
+  "stats": {
+    "startTime": "2026-10-11T17:46:47.269Z",
+    "duration": 130947.07,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "scope": "Real Windows Edge, fault injection; not actual phone storage exhaustion"
+}

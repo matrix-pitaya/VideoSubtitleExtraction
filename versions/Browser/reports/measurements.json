@@ -1,0 +1,814 @@
+{
+  "scope": "local Windows desktop hardware; mobile viewports are not real phone tests",
+  "reference": "你好，这是浏览器本地识别测试。视频不会上传到服务器。",
+  "fixtureSeconds": 7.32,
+  "runs": {
+    "desktop-edge": {
+      "deviceKind": "desktop-or-emulated-not-real-phone",
+      "browserVersion": "155.0.4283.45",
+      "firstReport": {
+        "schemaVersion": "1.0",
+        "prototype": "0.1.2",
+        "createdAt": "2026-10-11T16:54:49.187Z",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "platform": "Win32",
+        "hardwareConcurrency": 16,
+        "deviceMemoryGiB": 16,
+        "secureContext": true,
+        "model": {
+          "model": "whisper-tiny",
+          "repository": "onnx-community/whisper-tiny",
+          "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+          "multilingual": true,
+          "dtype": "q8",
+          "totalBytes": 43613734
+        },
+        "samples": [
+          {
+            "success": true,
+            "backend": "wasm",
+            "model": {
+              "id": 3,
+              "type": "model-ready",
+              "modelName": "whisper-tiny",
+              "backend": "wasm",
+              "loadMs": 3138.5,
+              "cachedBytes": 0,
+              "downloadedBytes": 43613734,
+              "totalBytes": 43613734,
+              "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+              "storage": "indexeddb"
+            },
+            "durationSeconds": 7.32,
+            "decodeMs": 3,
+            "inferenceMs": 2520.7000000029802,
+            "totalMs": 5748
+          }
+        ],
+        "errors": [],
+        "limits": {
+          "maxFileBytes": 104857600,
+          "maxDecodedBytes": 134217728,
+          "sampleRate": 16000,
+          "chunkSeconds": 20,
+          "overlapSeconds": 2
+        },
+        "realDeviceVerified": false,
+        "capabilities": {
+          "secureContext": true,
+          "webgpu": true,
+          "wasm": true,
+          "audioDecoder": true,
+          "worker": true
+        },
+        "deviceLabel": ""
+      },
+      "cachedReport": {
+        "schemaVersion": "1.0",
+        "prototype": "0.1.2",
+        "createdAt": "2026-10-11T16:54:56.031Z",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "platform": "Win32",
+        "hardwareConcurrency": 16,
+        "deviceMemoryGiB": 16,
+        "secureContext": true,
+        "model": {
+          "model": "whisper-tiny",
+          "repository": "onnx-community/whisper-tiny",
+          "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+          "multilingual": true,
+          "dtype": "q8",
+          "totalBytes": 43613734
+        },
+        "samples": [
+          {
+            "success": true,
+            "backend": "wasm",
+            "model": {
+              "id": 3,
+              "type": "model-ready",
+              "modelName": "whisper-tiny",
+              "backend": "wasm",
+              "loadMs": 2340.2000000029802,
+              "cachedBytes": 43613734,
+              "downloadedBytes": 0,
+              "totalBytes": 43613734,
+              "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+              "storage": "indexeddb"
+            },
+            "durationSeconds": 7.32,
+            "decodeMs": 2.9000000059604645,
+            "inferenceMs": 3830.9000000059605,
+            "totalMs": 6239.29999999702
+          }
+        ],
+        "errors": [],
+        "limits": {
+          "maxFileBytes": 104857600,
+          "maxDecodedBytes": 134217728,
+          "sampleRate": 16000,
+          "chunkSeconds": 20,
+          "overlapSeconds": 2
+        },
+        "realDeviceVerified": false,
+        "capabilities": {
+          "secureContext": true,
+          "webgpu": true,
+          "wasm": true,
+          "audioDecoder": true,
+          "worker": true
+        },
+        "deviceLabel": ""
+      },
+      "firstText": [
+        "你好,这是流览器本地时别测试,视频不会上传到服务器"
+      ],
+      "mp4Status": "已生成 1 段候选口播，请校对后保存。",
+      "mp4Text": [
+        "你好,这是流览器本地时别测试,事举不会上传到服务器"
+      ],
+      "mediaResults": {
+        "chinese.mov": {
+          "status": "已生成 1 段候选口播，请校对后保存。",
+          "texts": [
+            "你好,这是流览器本地时别测试,事举不会上传到服务器"
+          ]
+        },
+        "chinese.mp3": {
+          "status": "已生成 1 段候选口播，请校对后保存。",
+          "texts": [
+            "你好,这是流览器本地十别测试,事停不会上传到服务器"
+          ]
+        },
+        "silence.wav": {
+          "status": "近静音音频，文案留空。",
+          "texts": []
+        },
+        "bgm.wav": {
+          "status": "已生成 1 段候选口播，请校对后保存。",
+          "texts": [
+            "我不要再回我了"
+          ]
+        },
+        "boundary.wav": {
+          "status": "已生成 4 段候选口播，请校对后保存。",
+          "texts": [
+            "你好,这是柳覽器本地十别测试,视频不会上传到服务器,你好,这是柳覽器本地十别测试,视频不会上传到服务器,你好,这是柳覽器本地十别测试,视频不会上传到服务器,你好,这是柳覽器本地十别测试,视频不会上传到服务器本地十别测试,视频不会",
+            "視頻不會上傳到服務器",
+            "你好,這是流覽器本地識別測試",
+            "視頻不會上傳到服務器"
+          ]
+        },
+        "no-audio.mp4": {
+          "status": "NO_AUDIO：这个视频没有音轨。",
+          "texts": []
+        },
+        "broken.mp4": {
+          "status": "MEDIA_INVALID：MP4/MOV 数据损坏或找不到音轨。",
+          "texts": []
+        },
+        "chinese.wav": {
+          "status": "已生成 1 段候选口播，请校对后保存。",
+          "texts": [
+            "你好,这是流览器本地时别测试,视频不会上传到服务器"
+          ]
+        }
+      },
+      "network": {
+        "requests": 27,
+        "browserInternalRequests": 68,
+        "nonLocal": 0,
+        "uploads": 0
+      },
+      "txt": "﻿你好,这是流览器本地时别测试,视频不会上传到服务器",
+      "srt": "1\n00:00:00,000 --> 00:00:06,600\n你好,这是流览器本地时别测试,视频不会上传到服务器\n",
+      "quality": {
+        "referenceCharacters": 23,
+        "editDistance": 2,
+        "characterErrorRate": 0.08695652173913043
+      }
+    },
+    "android-emulated": {
+      "deviceKind": "desktop-or-emulated-not-real-phone",
+      "browserVersion": "155.0.4283.45",
+      "firstReport": {
+        "schemaVersion": "1.0",
+        "prototype": "0.1.2",
+        "createdAt": "2026-10-11T16:56:37.885Z",
+        "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.8010.12 Mobile Safari/537.36",
+        "platform": "Win32",
+        "hardwareConcurrency": 16,
+        "deviceMemoryGiB": 16,
+        "secureContext": true,
+        "model": {
+          "model": "whisper-tiny",
+          "repository": "onnx-community/whisper-tiny",
+          "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+          "multilingual": true,
+          "dtype": "q8",
+          "totalBytes": 43613734
+        },
+        "samples": [
+          {
+            "success": true,
+            "backend": "wasm",
+            "model": {
+              "id": 3,
+              "type": "model-ready",
+              "modelName": "whisper-tiny",
+              "backend": "wasm",
+              "loadMs": 3141.1000000089407,
+              "cachedBytes": 0,
+              "downloadedBytes": 43613734,
+              "totalBytes": 43613734,
+              "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+              "storage": "indexeddb"
+            },
+            "durationSeconds": 7.32,
+            "decodeMs": 3,
+            "inferenceMs": 2497.1000000089407,
+            "totalMs": 5720.100000008941
+          }
+        ],
+        "errors": [],
+        "limits": {
+          "maxFileBytes": 104857600,
+          "maxDecodedBytes": 134217728,
+          "sampleRate": 16000,
+          "chunkSeconds": 20,
+          "overlapSeconds": 2
+        },
+        "realDeviceVerified": false,
+        "capabilities": {
+          "secureContext": true,
+          "webgpu": true,
+          "wasm": true,
+          "audioDecoder": true,
+          "worker": true
+        },
+        "deviceLabel": ""
+      },
+      "cachedReport": {
+        "schemaVersion": "1.0",
+        "prototype": "0.1.2",
+        "createdAt": "2026-10-11T16:56:44.748Z",
+        "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.8010.12 Mobile Safari/537.36",
+        "platform": "Win32",
+        "hardwareConcurrency": 16,
+        "deviceMemoryGiB": 16,
+        "secureContext": true,
+        "model": {
+          "model": "whisper-tiny",
+          "repository": "onnx-community/whisper-tiny",
+          "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+          "multilingual": true,
+          "dtype": "q8",
+          "totalBytes": 43613734
+        },
+        "samples": [
+          {
+            "success": true,
+            "backend": "wasm",
+            "model": {
+              "id": 3,
+              "type": "model-ready",
+              "modelName": "whisper-tiny",
+              "backend": "wasm",
+              "loadMs": 2551.4000000059605,
+              "cachedBytes": 43613734,
+              "downloadedBytes": 0,
+              "totalBytes": 43613734,
+              "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+              "storage": "indexeddb"
+            },
+            "durationSeconds": 7.32,
+            "decodeMs": 3.5,
+            "inferenceMs": 3956.4000000059605,
+            "totalMs": 6592.399999991059
+          }
+        ],
+        "errors": [],
+        "limits": {
+          "maxFileBytes": 104857600,
+          "maxDecodedBytes": 134217728,
+          "sampleRate": 16000,
+          "chunkSeconds": 20,
+          "overlapSeconds": 2
+        },
+        "realDeviceVerified": false,
+        "capabilities": {
+          "secureContext": true,
+          "webgpu": true,
+          "wasm": true,
+          "audioDecoder": true,
+          "worker": true
+        },
+        "deviceLabel": ""
+      },
+      "firstText": [
+        "你好,这是流览器本地时别测试,视频不会上传到服务器"
+      ],
+      "mp4Status": "已生成 1 段候选口播，请校对后保存。",
+      "mp4Text": [
+        "你好,这是流览器本地时别测试,事举不会上传到服务器"
+      ],
+      "mediaResults": {
+        "chinese.mov": {
+          "status": "已生成 1 段候选口播，请校对后保存。",
+          "texts": [
+            "你好,这是流览器本地时别测试,事举不会上传到服务器"
+          ]
+        },
+        "chinese.mp3": {
+          "status": "已生成 1 段候选口播，请校对后保存。",
+          "texts": [
+            "你好,这是流览器本地十别测试,事停不会上传到服务器"
+          ]
+        },
+        "silence.wav": {
+          "status": "近静音音频，文案留空。",
+          "texts": []
+        },
+        "bgm.wav": {
+          "status": "已生成 1 段候选口播，请校对后保存。",
+          "texts": [
+            "我不要再回我了"
+          ]
+        },
+        "boundary.wav": {
+          "status": "已生成 4 段候选口播，请校对后保存。",
+          "texts": [
+            "你好,这是柳覽器本地十别测试,视频不会上传到服务器,你好,这是柳覽器本地十别测试,视频不会上传到服务器,你好,这是柳覽器本地十别测试,视频不会上传到服务器,你好,这是柳覽器本地十别测试,视频不会上传到服务器本地十别测试,视频不会",
+            "視頻不會上傳到服務器",
+            "你好,這是流覽器本地識別測試",
+            "視頻不會上傳到服務器"
+          ]
+        },
+        "no-audio.mp4": {
+          "status": "NO_AUDIO：这个视频没有音轨。",
+          "texts": []
+        },
+        "broken.mp4": {
+          "status": "MEDIA_INVALID：MP4/MOV 数据损坏或找不到音轨。",
+          "texts": []
+        },
+        "chinese.wav": {
+          "status": "已生成 1 段候选口播，请校对后保存。",
+          "texts": [
+            "你好,这是流览器本地时别测试,视频不会上传到服务器"
+          ]
+        }
+      },
+      "network": {
+        "requests": 27,
+        "browserInternalRequests": 66,
+        "nonLocal": 0,
+        "uploads": 0
+      },
+      "txt": "﻿你好,这是流览器本地时别测试,视频不会上传到服务器",
+      "srt": "1\n00:00:00,000 --> 00:00:06,600\n你好,这是流览器本地时别测试,视频不会上传到服务器\n",
+      "quality": {
+        "referenceCharacters": 23,
+        "editDistance": 2,
+        "characterErrorRate": 0.08695652173913043
+      }
+    },
+    "iphone-emulated-webkit": {
+      "deviceKind": "desktop-or-emulated-not-real-phone",
+      "browserVersion": "26.6",
+      "firstReport": {
+        "schemaVersion": "1.0",
+        "prototype": "0.1.2",
+        "createdAt": "2026-10-11T16:57:57.837Z",
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Mobile/15E148 Safari/604.1",
+        "platform": "Win32",
+        "hardwareConcurrency": 8,
+        "deviceMemoryGiB": null,
+        "secureContext": true,
+        "model": {
+          "model": "whisper-tiny",
+          "repository": "onnx-community/whisper-tiny",
+          "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+          "multilingual": true,
+          "dtype": "q8",
+          "totalBytes": 43613734
+        },
+        "samples": [
+          {
+            "success": true,
+            "backend": "wasm",
+            "model": {
+              "id": 3,
+              "type": "model-ready",
+              "modelName": "whisper-tiny",
+              "backend": "wasm",
+              "loadMs": 3606,
+              "cachedBytes": 0,
+              "downloadedBytes": 43613734,
+              "totalBytes": 43613734,
+              "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+              "storage": "indexeddb"
+            },
+            "durationSeconds": 7.32,
+            "decodeMs": 4,
+            "inferenceMs": 2821,
+            "totalMs": 6491
+          }
+        ],
+        "errors": [],
+        "limits": {
+          "maxFileBytes": 104857600,
+          "maxDecodedBytes": 134217728,
+          "sampleRate": 16000,
+          "chunkSeconds": 20,
+          "overlapSeconds": 2
+        },
+        "realDeviceVerified": false,
+        "capabilities": {
+          "secureContext": true,
+          "webgpu": false,
+          "wasm": true,
+          "audioDecoder": false,
+          "worker": true
+        },
+        "deviceLabel": ""
+      },
+      "cachedReport": {
+        "schemaVersion": "1.0",
+        "prototype": "0.1.2",
+        "createdAt": "2026-10-11T16:58:05.713Z",
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Mobile/15E148 Safari/604.1",
+        "platform": "Win32",
+        "hardwareConcurrency": 8,
+        "deviceMemoryGiB": null,
+        "secureContext": true,
+        "model": {
+          "model": "whisper-tiny",
+          "repository": "onnx-community/whisper-tiny",
+          "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+          "multilingual": true,
+          "dtype": "q8",
+          "totalBytes": 43613734
+        },
+        "samples": [
+          {
+            "success": true,
+            "backend": "wasm",
+            "model": {
+              "id": 3,
+              "type": "model-ready",
+              "modelName": "whisper-tiny",
+              "backend": "wasm",
+              "loadMs": 2154,
+              "cachedBytes": 43613734,
+              "downloadedBytes": 0,
+              "totalBytes": 43613734,
+              "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+              "storage": "indexeddb"
+            },
+            "durationSeconds": 7.32,
+            "decodeMs": 3,
+            "inferenceMs": 2869,
+            "totalMs": 5065
+          }
+        ],
+        "errors": [],
+        "limits": {
+          "maxFileBytes": 104857600,
+          "maxDecodedBytes": 134217728,
+          "sampleRate": 16000,
+          "chunkSeconds": 20,
+          "overlapSeconds": 2
+        },
+        "realDeviceVerified": false,
+        "capabilities": {
+          "secureContext": true,
+          "webgpu": false,
+          "wasm": true,
+          "audioDecoder": false,
+          "worker": true
+        },
+        "deviceLabel": ""
+      },
+      "firstText": [
+        "你好,这是流览器本地时别测试,视频不会上传到服务器"
+      ],
+      "mp4Status": "FORMAT_UNSUPPORTED：当前浏览器无法读取这个媒体文件。",
+      "mp4Text": [],
+      "mediaResults": {
+        "chinese.mov": {
+          "status": "FORMAT_UNSUPPORTED：当前浏览器无法读取这个媒体文件。",
+          "texts": []
+        },
+        "chinese.mp3": {
+          "status": "FORMAT_UNSUPPORTED：当前浏览器无法读取这个媒体文件。",
+          "texts": []
+        },
+        "silence.wav": {
+          "status": "近静音音频，文案留空。",
+          "texts": []
+        },
+        "bgm.wav": {
+          "status": "已生成 1 段候选口播，请校对后保存。",
+          "texts": [
+            "我不要再回我了"
+          ]
+        },
+        "boundary.wav": {
+          "status": "已生成 4 段候选口播，请校对后保存。",
+          "texts": [
+            "你好,这是柳覽器本地十别测试,视频不会上传到服务器,你好,这是柳覽器本地十别测试,视频不会上传到服务器,你好,这是柳覽器本地十别测试,视频不会上传到服务器,你好,这是柳覽器本地十别测试,视频不会上传到服务器本地十别测试,视频不会",
+            "視頻不會上傳到服務器",
+            "你好,這是流覽器本地識別測試",
+            "視頻不會上傳到服務器"
+          ]
+        },
+        "no-audio.mp4": {
+          "status": "NO_AUDIO：这个视频没有音轨。",
+          "texts": []
+        },
+        "broken.mp4": {
+          "status": "MEDIA_INVALID：MP4/MOV 数据损坏或找不到音轨。",
+          "texts": []
+        },
+        "chinese.wav": {
+          "status": "已生成 1 段候选口播，请校对后保存。",
+          "texts": [
+            "你好,这是流览器本地时别测试,视频不会上传到服务器"
+          ]
+        }
+      },
+      "network": {
+        "requests": 32,
+        "browserInternalRequests": 0,
+        "nonLocal": 0,
+        "uploads": 0
+      },
+      "txt": "﻿你好,这是流览器本地时别测试,视频不会上传到服务器",
+      "srt": "1\n00:00:00,000 --> 00:00:06,600\n你好,这是流览器本地时别测试,视频不会上传到服务器\n",
+      "quality": {
+        "referenceCharacters": 23,
+        "editDistance": 2,
+        "characterErrorRate": 0.08695652173913043
+      }
+    }
+  },
+  "pythonBaseline": {
+    "environment": "local Windows desktop, not production server or phone",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "model": "faster-whisper small",
+    "device": "cpu",
+    "computeType": "int8",
+    "cpuThreads": 4,
+    "durationSeconds": 7.32,
+    "loadMs": 1085.8716999937315,
+    "inferenceMs": 2313.395400007721,
+    "segments": [
+      {
+        "start": 0.0,
+        "end": 3.36,
+        "text": "你好,这是浏览器本地识别测试。"
+      },
+      {
+        "start": 4.16,
+        "end": 6.56,
+        "text": "视频不会上传到服务器。"
+      }
+    ],
+    "text": "你好,这是浏览器本地识别测试。视频不会上传到服务器。",
+    "quality": {
+      "referenceCharacters": 23,
+      "editDistance": 0,
+      "characterErrorRate": 0.0
+    }
+  },
+  "webgpu": {
+    "browserVersion": "155.0.4283.45",
+    "report": {
+      "schemaVersion": "1.0",
+      "prototype": "0.1.2",
+      "createdAt": "2026-10-11T16:52:58.671Z",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+      "platform": "Win32",
+      "hardwareConcurrency": 16,
+      "deviceMemoryGiB": 16,
+      "secureContext": true,
+      "model": {
+        "model": "whisper-tiny",
+        "repository": "onnx-community/whisper-tiny",
+        "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+        "multilingual": true,
+        "dtype": "q8",
+        "totalBytes": 43613734
+      },
+      "samples": [
+        {
+          "success": true,
+          "backend": "wasm",
+          "model": {
+            "id": 6,
+            "type": "model-ready",
+            "modelName": "whisper-tiny",
+            "backend": "wasm",
+            "loadMs": 3038.5999999940395,
+            "cachedBytes": 43613734,
+            "downloadedBytes": 0,
+            "totalBytes": 43613734,
+            "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+            "storage": "indexeddb"
+          },
+          "durationSeconds": 7.32,
+          "decodeMs": 4.0999999940395355,
+          "inferenceMs": 4242.699999988079,
+          "totalMs": 26303.09999999404
+        }
+      ],
+      "errors": [
+        {
+          "code": "SAMPLE_INVALID",
+          "phase": "webgpu-fallback"
+        }
+      ],
+      "limits": {
+        "maxFileBytes": 104857600,
+        "maxDecodedBytes": 134217728,
+        "sampleRate": 16000,
+        "chunkSeconds": 20,
+        "overlapSeconds": 2
+      },
+      "realDeviceVerified": false,
+      "capabilities": {
+        "secureContext": true,
+        "webgpu": true,
+        "wasm": true,
+        "audioDecoder": true,
+        "worker": true
+      },
+      "deviceLabel": ""
+    }
+  },
+  "storageFaults": {
+    "unavailable": {
+      "faultInjection": true,
+      "report": {
+        "schemaVersion": "1.0",
+        "prototype": "0.1.2",
+        "createdAt": "2026-10-11T16:55:46.962Z",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "platform": "Win32",
+        "hardwareConcurrency": 16,
+        "deviceMemoryGiB": 16,
+        "secureContext": true,
+        "model": {
+          "model": "whisper-tiny",
+          "repository": "onnx-community/whisper-tiny",
+          "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+          "multilingual": true,
+          "dtype": "q8",
+          "totalBytes": 43613734
+        },
+        "samples": [
+          {
+            "success": true,
+            "backend": "wasm",
+            "model": {
+              "id": 3,
+              "type": "model-ready",
+              "modelName": "whisper-tiny",
+              "backend": "wasm",
+              "loadMs": 2893.7000000029802,
+              "cachedBytes": 0,
+              "downloadedBytes": 43613734,
+              "totalBytes": 43613734,
+              "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+              "storage": "memory"
+            },
+            "durationSeconds": 7.32,
+            "decodeMs": 3.4000000059604645,
+            "inferenceMs": 2522,
+            "totalMs": 5558.300000011921
+          }
+        ],
+        "errors": [
+          {
+            "code": "CACHE_UNAVAILABLE",
+            "phase": "cache"
+          }
+        ],
+        "limits": {
+          "maxFileBytes": 104857600,
+          "maxDecodedBytes": 134217728,
+          "sampleRate": 16000,
+          "chunkSeconds": 20,
+          "overlapSeconds": 2
+        },
+        "realDeviceVerified": false,
+        "capabilities": {
+          "secureContext": true,
+          "webgpu": true,
+          "wasm": true,
+          "audioDecoder": true,
+          "worker": true
+        },
+        "deviceLabel": ""
+      }
+    },
+    "quota": {
+      "faultInjection": true,
+      "report": {
+        "schemaVersion": "1.0",
+        "prototype": "0.1.2",
+        "createdAt": "2026-10-11T16:55:54.022Z",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "platform": "Win32",
+        "hardwareConcurrency": 16,
+        "deviceMemoryGiB": 16,
+        "secureContext": true,
+        "model": {
+          "model": "whisper-tiny",
+          "repository": "onnx-community/whisper-tiny",
+          "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+          "multilingual": true,
+          "dtype": "q8",
+          "totalBytes": 43613734
+        },
+        "samples": [
+          {
+            "success": true,
+            "backend": "wasm",
+            "model": {
+              "id": 3,
+              "type": "model-ready",
+              "modelName": "whisper-tiny",
+              "backend": "wasm",
+              "loadMs": 3144.5,
+              "cachedBytes": 0,
+              "downloadedBytes": 43613734,
+              "totalBytes": 43613734,
+              "revision": "ff4177021cc41f7db950912b73ea4fdf7d01d8e7",
+              "storage": "indexeddb"
+            },
+            "durationSeconds": 7.32,
+            "decodeMs": 3.2000000029802322,
+            "inferenceMs": 2477.5999999940395,
+            "totalMs": 5758.70000000298
+          }
+        ],
+        "errors": [
+          {
+            "code": "CACHE_WRITE_FAILED",
+            "phase": "cache"
+          },
+          {
+            "code": "CACHE_WRITE_FAILED",
+            "phase": "cache"
+          },
+          {
+            "code": "CACHE_WRITE_FAILED",
+            "phase": "cache"
+          },
+          {
+            "code": "CACHE_WRITE_FAILED",
+            "phase": "cache"
+          },
+          {
+            "code": "CACHE_WRITE_FAILED",
+            "phase": "cache"
+          },
+          {
+            "code": "CACHE_WRITE_FAILED",
+            "phase": "cache"
+          },
+          {
+            "code": "CACHE_WRITE_FAILED",
+            "phase": "cache"
+          }
+        ],
+        "limits": {
+          "maxFileBytes": 104857600,
+          "maxDecodedBytes": 134217728,
+          "sampleRate": 16000,
+          "chunkSeconds": 20,
+          "overlapSeconds": 2
+        },
+        "realDeviceVerified": false,
+        "capabilities": {
+          "secureContext": true,
+          "webgpu": true,
+          "wasm": true,
+          "audioDecoder": true,
+          "worker": true
+        },
+        "deviceLabel": ""
+      }
+    }
+  },
+  "automatedTestSummary": {
+    "startTime": "2026-10-11T16:52:48.641Z",
+    "duration": 345841.097,
+    "expected": 21,
+    "skipped": 12,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "scope": "Windows desktop and mobile viewport emulation; not real phones or song evaluation",
+  "reference": "你好，这是浏览器本地识别测试。视频不会上传到服务器。",
+  "runs": {
+    "desktop-edge": {
+      "realPhone": false,
+      "browserVersion": "155.0.4283.45",
+      "report": {
+        "schemaVersion": "1.0",
+        "prototype": "0.1.1",
+        "createdAt": "2026-10-11T16:28:21.074Z",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+        "platform": "Win32",
+        "hardwareConcurrency": 16,
+        "deviceMemoryGiB": 16,
+        "secureContext": true,
+        "model": {
+          "model": "whisper-base",
+          "repository": "onnx-community/whisper-base",
+          "revision": "1846881b6b3a3024392c1eea3ad983695bc23925",
+          "multilingual": true,
+          "dtype": "q8",
+          "totalBytes": 79664191
+        },
+        "samples": [
+          {
+            "success": true,
+            "backend": "wasm",
+            "model": {
+              "id": 3,
+              "type": "model-ready",
+              "modelName": "whisper-base",
+              "backend": "wasm",
+              "loadMs": 4883.600000008941,
+              "cachedBytes": 0,
+              "downloadedBytes": 79664191,
+              "totalBytes": 79664191,
+              "revision": "1846881b6b3a3024392c1eea3ad983695bc23925",
+              "storage": "indexeddb"
+            },
+            "durationSeconds": 7.32,
+            "decodeMs": 2.7999999970197678,
+            "inferenceMs": 4805.9000000059605,
+            "totalMs": 9754.70000000298
+          }
+        ],
+        "errors": [],
+        "limits": {
+          "maxFileBytes": 104857600,
+          "maxSeconds": 60,
+          "sampleRate": 16000,
+          "chunkSeconds": 20,
+          "overlapSeconds": 2
+        },
+        "realDeviceVerified": false,
+        "capabilities": {
+          "secureContext": true,
+          "webgpu": true,
+          "wasm": true,
+          "audioDecoder": true,
+          "worker": true
+        },
+        "deviceLabel": ""
+      },
+      "texts": [
+        "你好,這是流氮氣本地識別測試。",
+        "視頻不會上傳到服務器。"
+      ]
+    },
+    "android-emulated": {
+      "realPhone": false,
+      "browserVersion": "155.0.4283.45",
+      "report": {
+        "schemaVersion": "1.0",
+        "prototype": "0.1.1",
+        "createdAt": "2026-10-11T16:30:11.313Z",
+        "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.8010.12 Mobile Safari/537.36",
+        "platform": "Win32",
+        "hardwareConcurrency": 16,
+        "deviceMemoryGiB": 16,
+        "secureContext": true,
+        "model": {
+          "model": "whisper-base",
+          "repository": "onnx-community/whisper-base",
+          "revision": "1846881b6b3a3024392c1eea3ad983695bc23925",
+          "multilingual": true,
+          "dtype": "q8",
+          "totalBytes": 79664191
+        },
+        "samples": [
+          {
+            "success": true,
+            "backend": "wasm",
+            "model": {
+              "id": 3,
+              "type": "model-ready",
+              "modelName": "whisper-base",
+              "backend": "wasm",
+              "loadMs": 4852.0999999940395,
+              "cachedBytes": 0,
+              "downloadedBytes": 79664191,
+              "totalBytes": 79664191,
+              "revision": "1846881b6b3a3024392c1eea3ad983695bc23925",
+              "storage": "indexeddb"
+            },
+            "durationSeconds": 7.32,
+            "decodeMs": 3.1000000089406967,
+            "inferenceMs": 4755.199999988079,
+            "totalMs": 9681.79999999702
+          }
+        ],
+        "errors": [],
+        "limits": {
+          "maxFileBytes": 104857600,
+          "maxSeconds": 60,
+          "sampleRate": 16000,
+          "chunkSeconds": 20,
+          "overlapSeconds": 2
+        },
+        "realDeviceVerified": false,
+        "capabilities": {
+          "secureContext": true,
+          "webgpu": true,
+          "wasm": true,
+          "audioDecoder": true,
+          "worker": true
+        },
+        "deviceLabel": ""
+      },
+      "texts": [
+        "你好,這是流氮氣本地識別測試。",
+        "視頻不會上傳到服務器。"
+      ]
+    },
+    "iphone-emulated-webkit": {
+      "realPhone": false,
+      "browserVersion": "26.6",
+      "report": {
+        "schemaVersion": "1.0",
+        "prototype": "0.1.1",
+        "createdAt": "2026-10-11T16:31:35.053Z",
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Mobile/15E148 Safari/604.1",
+        "platform": "Win32",
+        "hardwareConcurrency": 8,
+        "deviceMemoryGiB": null,
+        "secureContext": true,
+        "model": {
+          "model": "whisper-base",
+          "repository": "onnx-community/whisper-base",
+          "revision": "1846881b6b3a3024392c1eea3ad983695bc23925",
+          "multilingual": true,
+          "dtype": "q8",
+          "totalBytes": 79664191
+        },
+        "samples": [
+          {
+            "success": true,
+            "backend": "wasm",
+            "model": {
+              "id": 3,
+              "type": "model-ready",
+              "modelName": "whisper-base",
+              "backend": "wasm",
+              "loadMs": 4956,
+              "cachedBytes": 0,
+              "downloadedBytes": 79664191,
+              "totalBytes": 79664191,
+              "revision": "1846881b6b3a3024392c1eea3ad983695bc23925",
+              "storage": "indexeddb"
+            },
+            "durationSeconds": 7.32,
+            "decodeMs": 4,
+            "inferenceMs": 5031,
+            "totalMs": 10036
+          }
+        ],
+        "errors": [],
+        "limits": {
+          "maxFileBytes": 104857600,
+          "maxSeconds": 60,
+          "sampleRate": 16000,
+          "chunkSeconds": 20,
+          "overlapSeconds": 2
+        },
+        "realDeviceVerified": false,
+        "capabilities": {
+          "secureContext": true,
+          "webgpu": false,
+          "wasm": true,
+          "audioDecoder": false,
+          "worker": true
+        },
+        "deviceLabel": ""
+      },
+      "texts": [
+        "你好,這是流氮氣本地識別測試。",
+        "視頻不會上傳到服務器。"
+      ]
+    }
+  }
+}

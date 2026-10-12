@@ -6,6 +6,7 @@
 | --- | --- | --- |
 | Web | 可用 | 双击 `Web/VideoSubtitleExtraction.cmd` 启动本目录的完整 Web 工程，使用浏览器操作 |
 | Windows | 可用桌面试用包 | 客户解压后双击 EXE，在独立窗口中使用 |
+| Browser | 实验原型，手机真机待测 | 可选 small / medium，在设备 Worker 本地识别；暂不收费 |
 | macOS | 未开发 | 预留 Mac 软件工程和交付文件位置 |
 | Android | 未开发 | 预留本地识别 Android 软件工程和 APK 位置 |
 | iOS | 未开发 | 预留本地识别 iOS 软件工程及签名交付文件位置 |

@@ -1,0 +1,52 @@
+{
+  "reference": "你好，这是浏览器本地识别测试。视频不会上传到服务器。",
+  "source": "Project-authored synthetic Chinese speech, Microsoft Huihui Desktop TTS",
+  "durationSeconds": 7.32,
+  "files": [
+    {
+      "path": "bgm.wav",
+      "bytes": 96044,
+      "sha256": "9f5f1906efeddf2c292d7272382f242767728e0878c55a27a926b75fc591a287"
+    },
+    {
+      "path": "boundary.wav",
+      "bytes": 937004,
+      "sha256": "0aa2212b72903ee9178fd0301922faad9bb231d05a5131c850611562c3954a26"
+    },
+    {
+      "path": "broken.mp4",
+      "bytes": 18,
+      "sha256": "d71d711e274eaa977a5de16cc49de2b88ca081af1add7367239ba015f91ee866"
+    },
+    {
+      "path": "chinese.mov",
+      "bytes": 58267,
+      "sha256": "d3d5a3e9272977fed03c6f444d8dd278592bc45e5251000d390cc9fdfeab83e5"
+    },
+    {
+      "path": "chinese.mp3",
+      "bytes": 22472,
+      "sha256": "55bbe26b06b511c9c98d12048b33242817a4517c2c227f8e78c24d2175605aab"
+    },
+    {
+      "path": "chinese.mp4",
+      "bytes": 58216,
+      "sha256": "90f807536c273ed933b559dfe1a733f02665be7f4ade051383e42e34441b0f81"
+    },
+    {
+      "path": "chinese.wav",
+      "bytes": 234286,
+      "sha256": "b4ceb5909bf9e26570c202b57cc0a8d2ba381e08df3bbe9fae959a0d19a6d555"
+    },
+    {
+      "path": "no-audio.mp4",
+      "bytes": 1698,
+      "sha256": "e60f2fb9d34586acf78fe4adb6af271ef4474e684a49dce5a710b2b964f01f5e"
+    },
+    {
+      "path": "silence.wav",
+      "bytes": 64044,
+      "sha256": "20eaebffe1816e0ffa6f7f854f5ef4ea80d5349faaf0ce1fec1b713e7fde58fa"
+    }
+  ]
+}

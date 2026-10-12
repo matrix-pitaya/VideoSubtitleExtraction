@@ -1,0 +1,70 @@
+{
+  "realPhone": false,
+  "browserVersion": "155.0.4283.45",
+  "report": {
+    "schemaVersion": "1.0",
+    "prototype": "0.1.2",
+    "createdAt": "2026-10-11T16:53:43.151Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "platform": "Win32",
+    "hardwareConcurrency": 16,
+    "deviceMemoryGiB": 16,
+    "secureContext": true,
+    "model": {
+      "model": "whisper-small",
+      "repository": "onnx-community/whisper-small",
+      "revision": "36050c46d777d46dc4b5f43f6d90574fc38f8732",
+      "multilingual": true,
+      "dtype": "q8",
+      "totalBytes": 251846613
+    },
+    "samples": [
+      {
+        "success": true,
+        "backend": "wasm",
+        "model": {
+          "id": 3,
+          "type": "model-ready",
+          "modelName": "whisper-small",
+          "backend": "wasm",
+          "loadMs": 14540.90000000596,
+          "cachedBytes": 0,
+          "downloadedBytes": 251846613,
+          "totalBytes": 251846613,
+          "revision": "36050c46d777d46dc4b5f43f6d90574fc38f8732",
+          "storage": "indexeddb"
+        },
+        "durationSeconds": 7.32,
+        "decodeMs": 3.7000000029802322,
+        "inferenceMs": 19726,
+        "totalMs": 34363.89999999106
+      }
+    ],
+    "errors": [
+      {
+        "code": "CACHE_WRITE_FAILED",
+        "phase": "cache"
+      }
+    ],
+    "limits": {
+      "maxFileBytes": 104857600,
+      "maxDecodedBytes": 134217728,
+      "sampleRate": 16000,
+      "chunkSeconds": 20,
+      "overlapSeconds": 2
+    },
+    "realDeviceVerified": false,
+    "capabilities": {
+      "secureContext": true,
+      "webgpu": true,
+      "wasm": true,
+      "audioDecoder": true,
+      "worker": true
+    },
+    "deviceLabel": ""
+  },
+  "texts": [
+    "你好,这是浏览器本地识别测试。",
+    "视频不会上传到服务器。"
+  ]
+}

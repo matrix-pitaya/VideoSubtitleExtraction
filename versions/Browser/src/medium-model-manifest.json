@@ -1,0 +1,76 @@
+{
+  "model": "whisper-medium",
+  "repository": "Xenova/whisper-medium",
+  "revision": "8c5b90880ab9f79487ab33613413431bf661d595",
+  "multilingual": true,
+  "dtype": "q8",
+  "files": [
+    {
+      "path": "config.json",
+      "bytes": 2256,
+      "sha256": "a9c2ef0290a8fa3d203231dd01a074891b7f595d5d305ead2aac8ac5e6e47105"
+    },
+    {
+      "path": "generation_config.json",
+      "bytes": 3694,
+      "sha256": "c57f39da43ff86f60451a1c978743ca48fd995ac5d7e3c3534f856d0bed57770"
+    },
+    {
+      "path": "preprocessor_config.json",
+      "bytes": 339,
+      "sha256": "a6a76d28c93edb273669eb9e0b0636a2bddbb1272c3261e47b7ca6dfdbac1b8d"
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 2480466,
+      "sha256": "27fc476bfe7f17299480be2273fc0608e4d5a99aba2ab5dec5374b4482d1a566"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 282683,
+      "sha256": "2a4c4281cf9f51ac6ccc406fdc711a087afe6530f671fa7b80953edc498275ce"
+    },
+    {
+      "path": "onnx/encoder_model_quantized.onnx",
+      "bytes": 313466574,
+      "sha256": "5120d20e2623825bd31c0f955368638fd08971ab4172d4fe9abfaaa24917d39e"
+    },
+    {
+      "path": "onnx/decoder_model_merged_quantized.onnx",
+      "bytes": 462661606,
+      "sha256": "2cdd6d06ebdf9d993d21117bfeeb7e9b399521b7766d3df77c54a85d6dcf3c08"
+    }
+  ],
+  "totalBytes": 778897618,
+  "encoderGraphOptimization": {
+    "bytes": 313466574,
+    "sha256": "5120d20e2623825bd31c0f955368638fd08971ab4172d4fe9abfaaa24917d39e",
+    "removedOutputs": [
+      "encoder_attentions.0",
+      "encoder_attentions.1",
+      "encoder_attentions.2",
+      "encoder_attentions.3",
+      "encoder_attentions.4",
+      "encoder_attentions.5",
+      "encoder_attentions.6",
+      "encoder_attentions.7",
+      "encoder_attentions.8",
+      "encoder_attentions.9",
+      "encoder_attentions.10",
+      "encoder_attentions.11",
+      "encoder_attentions.12",
+      "encoder_attentions.13",
+      "encoder_attentions.14",
+      "encoder_attentions.15",
+      "encoder_attentions.16",
+      "encoder_attentions.17",
+      "encoder_attentions.18",
+      "encoder_attentions.19",
+      "encoder_attentions.20",
+      "encoder_attentions.21",
+      "encoder_attentions.22",
+      "encoder_attentions.23"
+    ],
+    "method": "remove-unused-encoder-output-fields-v1"
+  }
+}
